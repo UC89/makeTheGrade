@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Course" representedClassName="Course" syncable="YES">
+        <attribute name="pointsOrPercentage" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Semester" inverseName="courseList" inverseEntity="Semester" syncable="YES"/>
+        <relationship name="gradeList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Grade" inverseName="belongsTo" inverseEntity="Grade" syncable="YES"/>
+    </entity>
+    <entity name="Grade" representedClassName="Grade" syncable="YES">
+        <attribute name="pointsEarned" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="pointsPossible" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="gradeList" inverseEntity="Course" syncable="YES"/>
+    </entity>
+    <entity name="Semester" representedClassName="Semester" syncable="YES">
+        <attribute name="season" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="semesterList" inverseEntity="Student" syncable="YES"/>
+        <relationship name="courseList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="belongsTo" inverseEntity="Course" syncable="YES"/>
+    </entity>
+    <entity name="Student" representedClassName="Student" syncable="YES">
+        <attribute name="nonSciGpa" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="overallGpa" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="sciGpa" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="totalCredits" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="totalNonSciCredits" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="totalSciCredits" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="semesterList" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Semester" inverseName="belongsTo" inverseEntity="Semester" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Course" positionX="196" positionY="-63" width="128" height="88"/>
+        <element name="Grade" positionX="-36" positionY="9" width="128" height="88"/>
+        <element name="Semester" positionX="-36" positionY="-139" width="128" height="103"/>
+        <element name="Student" positionX="196" positionY="-169" width="128" height="148"/>
+    </elements>
+</model>
