@@ -58,6 +58,8 @@ class MainPageViewController: UIViewController {
     }
     */
     
+    
+    
     lazy var managedObjectContext : NSManagedObjectContext? =
     {
         let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
