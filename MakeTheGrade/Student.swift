@@ -11,5 +11,14 @@ import CoreData
 
 class Student: NSManagedObject {
 
-
+    @NSManaged var studentName: String
+    @NSManaged var totalSciCredits: NSNumber
+    @NSManaged var totalNonSciCredits: NSNumber
+    @NSManaged var totalCredits: NSNumber
+    @NSManaged var sciGpa: NSNumber
+    @NSManaged var overallGpa: NSNumber
+    @NSManaged var nonSciGpa: NSNumber
+    @NSManaged var semesterList: NSSet
+    
+    var userCreated: Bool = false
 }

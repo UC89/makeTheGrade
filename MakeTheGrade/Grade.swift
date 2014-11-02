@@ -13,6 +13,7 @@ class Grade: NSManagedObject {
 
     @NSManaged var pointsEarned: NSNumber
     @NSManaged var pointsPossible: NSNumber
+    @NSManaged var percentage: NSNumber
     @NSManaged var relationship: Course
 
 }

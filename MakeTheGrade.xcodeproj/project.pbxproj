@@ -56,6 +56,7 @@
 		4D4FED1619F8898100B499A7 /* MakeTheGradeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeTheGradeTests.swift; sourceTree = "<group>"; };
 		4D4FED2019F88DAA00B499A7 /* MainPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		4D4FED2219F890A500B499A7 /* GpaDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GpaDetailViewController.swift; sourceTree = "<group>"; };
+		4DCF3A231A0650A9009AF728 /* MakeTheGrade 2_1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MakeTheGrade 2_1.xcdatamodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +465,7 @@
 		4D4FECFF19F8898100B499A7 /* MakeTheGrade.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				4DCF3A231A0650A9009AF728 /* MakeTheGrade 2_1.xcdatamodel */,
 				4D4FED0019F8898100B499A7 /* MakeTheGrade.xcdatamodel */,
 			);
 			currentVersion = 4D4FED0019F8898100B499A7 /* MakeTheGrade.xcdatamodel */;

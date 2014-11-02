@@ -13,5 +13,7 @@ class Semester: NSManagedObject {
 
     @NSManaged var season: String
     @NSManaged var year: NSNumber
-
+    @NSManaged var belongsTo: Student
+    @NSManaged var courseList: NSSet
+    
 }

@@ -23,6 +23,8 @@ class Course: NSManagedObject {
     @NSManaged var semesterSeason: String
     @NSManaged var belongsTo: Semester
     @NSManaged var gradeList: NSSet
+    
+
 
     // change [Int] to [Grade]
     func getGradeList() -> [Int]
