@@ -63,35 +63,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var gradeTableView: UITableView!
    
     var userCreated: Bool = false
-   
-    func loadStudent() -> Bool
-    {
-        var appDel : AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
-        var request = NSFetchRequest(entityName: "Student")
-        request.returnsObjectsAsFaults = false;
-        request.predicate = NSPredicate(format:"studentName = %@", "User")
-        var result: NSArray = context.executeFetchRequest(request, error: nil)!
-        if (result.count > 0)
-        {
-            return true
-        }
-        else
-        {
-            var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-            var context:NSManagedObjectContext = appDel.managedObjectContext!
-            
-            let newUser = NSEntityDescription.insertNewObjectForEntityForName("Student",inManagedObjectContext: context) as Student
-            newUser.studentName = "User"
-            newUser.sciGpa=0
-            newUser.nonSciGpa=0
-            newUser.totalSciCredits=0
-            newUser.totalNonSciCredits=0
-            newUser.overallGpa=0
-            newUser.totalCredits=0
-            return true
-        }
-    }
+    
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -108,24 +80,41 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        var userCreated: Bool = false
+        var userLoaded: Bool = false
         
+        func save()
+        {
+            var appDel : AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+            var context:NSManagedObjectContext = appDel.managedObjectContext!
+            
+            var error : NSError?
+            if(context.save(&error) ) {
+                println(error?.localizedDescription)
+            }
+        }
         func loadStudent() -> Bool
         {
             var appDel : AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
             var context:NSManagedObjectContext = appDel.managedObjectContext!
+            
+            //gets all User objects
             var request = NSFetchRequest(entityName: "Student")
             request.returnsObjectsAsFaults = false;
+            
+            //filters User objects to only return those with studentName = to "User"
             request.predicate = NSPredicate(format:"studentName = %@", "User")
+            
             var result: NSArray = context.executeFetchRequest(request, error: nil)!
             println("printing result \(result)")
             if (result.count > 0)
             {
+                println("In result.count if statement: \(result.count)")
                 println("User already created")
                 return true
             }
             else
             {
+                println("User not found")
                 var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
                 var context:NSManagedObjectContext = appDel.managedObjectContext!
                 
@@ -138,13 +127,14 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
                 newUser.overallGpa=0
                 newUser.totalCredits=0
                 println("User created \(newUser.studentName)")
+                save()
                 return true
             }
         }
         
-        if (userCreated==false)
+        if (userLoaded==false)
         {
-            userCreated=loadStudent()
+            userLoaded=loadStudent()
         }
     }
     

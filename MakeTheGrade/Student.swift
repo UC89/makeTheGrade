@@ -20,5 +20,9 @@ class Student: NSManagedObject {
     @NSManaged var nonSciGpa: NSNumber
     @NSManaged var semesterList: NSSet
     
-    var userCreated: Bool = false
+    func returnNumberOfSemesters() -> Int
+    {
+        return semesterList.count
+    }
+
 }
