@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class NewCourseViewController: UIViewController {
-    
+    // Add UIAlert if percentages do not add up to 100% or total point amount.
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
