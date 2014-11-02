@@ -13,7 +13,8 @@
 import UIKit
 import CoreData
 
-class MainPageViewController: UIViewController {
+class MainPageViewController: UIViewController, UITableViewDataSource {
+    
     /*
     let cellIdentifier = "cellIdentifier"
     @IBOutlet var gradesTableView: UITableView!
@@ -39,8 +40,9 @@ class MainPageViewController: UIViewController {
     {
         var cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "No grades Entered")
         
-        cell.textLabel?.text = String("\(gradeCalc.returnAssignmentNames()[indexPath.row])   \(gradeCalc.returnGrades()[indexPath.row])")
-        
+        cell.textLabel?.text = String("\(gradeCalc.returnAssignmentNames()[indexPath.row])   \(gradeCalc.returnGrades()[indexPath.row])")                                   //indexPath.row is the number of the row, this is almost
+                                                                 // like a for loop in the length of 
+                                                                // the tableview numberOfRowsInSection Function
         return cell
     }
     
@@ -58,25 +60,25 @@ class MainPageViewController: UIViewController {
     }
     */
     
+    @IBOutlet var gradeTableView: UITableView!
     
+
     
-    lazy var managedObjectContext : NSManagedObjectContext? =
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        let appDelegate = UIApplication.sharedApplication().delegate as AppDelegate
-        if let managedObjectContext = appDelegate.managedObjectContext
-        {
-            return managedObjectContext
-        }
-        else
-        {
-            return nil
-        }
-    }()
+        return 5
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "No Grades Entered")
+        cell.textLabel?.text = "\(indexPath.row)"
+        return cell
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        println(managedObjectContext)
     }
     
     override func didReceiveMemoryWarning() {
