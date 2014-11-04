@@ -24,5 +24,21 @@ class Student: NSManagedObject {
     {
         return semesterList.count
     }
+    
+    class func returnSemesterList(moc: NSManagedObjectContext) -> NSSet
+    {
+        let returnArray = [Semester]()
+        let belongsToUser = NSFetchRequest(entityName: "Student")
+        belongsToUser.returnsObjectsAsFaults = false
+        belongsToUser.predicate = NSPredicate(format: "studentName = %@","User")
+        
+        var user:NSArray = moc.executeFetchRequest(belongsToUser, error: nil)!
+        
+        var userSelected = user[0] as Student
+        
+        var listOfSemesters = userSelected.semesterList
+        
+        return listOfSemesters
+    }
 
 }

@@ -82,6 +82,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         // Do any additional setup after loading the view, typically from a nib.
         var userLoaded: Bool = false
         
+        //save function
         func save()
         {
             var appDel : AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
@@ -92,6 +93,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
                 println(error?.localizedDescription)
             }
         }
+        
         func loadStudent() -> Bool
         {
             var appDel : AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)

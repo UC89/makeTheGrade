@@ -11,7 +11,9 @@ import UIKit
 import CoreData
 
 class NewSemesterViewController: UIViewController, UIPickerViewDelegate {
+    
     @IBOutlet var semesterPickerView: UIPickerView!
+    
     var semesters = ["Fall","Spring","Winter","Summer","Q1","Q2","Q3","Q4"]
     var years = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026]
     var semesterSelected = "Fall"
@@ -73,9 +75,10 @@ class NewSemesterViewController: UIViewController, UIPickerViewDelegate {
    
     @IBAction func submitButtonPressed()
     {
+        var semesterIDIn = 1
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
-        Semester.addSemester(context, season: semesterSelected, year: yearSelected)
+        Semester.addSemester(context, season: semesterSelected, year: yearSelected,semesterID: semesterIDIn)
         save()
         
     }

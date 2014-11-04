@@ -532,6 +532,9 @@
                                 <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
                                     <rect key="frame" x="179" y="244" width="167" height="228"/>
                                 </variation>
+                                <connections>
+                                    <action selector="indexChanged:" destination="ucw-tm-PvA" eventType="valueChanged" id="BQi-0c-3vm"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="J6q-xk-ROF">
                                 <rect key="frame" x="179" y="157" width="84" height="29"/>
@@ -639,28 +642,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Final Grade" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRC-Jp-lnB">
-                                <rect key="frame" x="179" y="250" width="130" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="3fI-NB-RbY"/>
-                                </constraints>
-                                <color key="textColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="3fI-NB-RbY"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="3fI-NB-RbY"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="179" y="290" width="134" height="30"/>
-                                </variation>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoN-8R-u4v">
                                 <rect key="frame" x="179" y="380" width="97" height="30"/>
                                 <constraints>
@@ -741,6 +722,28 @@
                                     <rect key="frame" x="205" y="638" width="195" height="162"/>
                                 </variation>
                             </pickerView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" placeholder="Enter Final Grade" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HRC-Jp-lnB">
+                                <rect key="frame" x="179" y="250" width="130" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3fI-NB-RbY"/>
+                                </constraints>
+                                <color key="textColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="3fI-NB-RbY"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="3fI-NB-RbY"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="179" y="290" width="134" height="30"/>
+                                </variation>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -864,10 +867,6 @@
                                 <exclude reference="Du5-TR-ezu"/>
                                 <exclude reference="KmQ-pJ-DZK"/>
                                 <exclude reference="V5s-YK-71h"/>
-                                <exclude reference="Ata-Do-WCU"/>
-                                <exclude reference="Eij-od-P2V"/>
-                                <exclude reference="gTn-sf-VRi"/>
-                                <exclude reference="pkg-FO-ihY"/>
                                 <exclude reference="S27-PT-g3V"/>
                                 <exclude reference="h3l-zV-OKA"/>
                                 <exclude reference="JKg-ft-yH0"/>
@@ -880,6 +879,10 @@
                                 <exclude reference="iM7-fS-9k5"/>
                                 <exclude reference="uk3-Qz-fnn"/>
                                 <exclude reference="Bs5-2v-AOY"/>
+                                <exclude reference="Ata-Do-WCU"/>
+                                <exclude reference="Eij-od-P2V"/>
+                                <exclude reference="gTn-sf-VRi"/>
+                                <exclude reference="pkg-FO-ihY"/>
                                 <exclude reference="jnm-kq-NMK"/>
                                 <exclude reference="oIe-Rl-DAh"/>
                                 <exclude reference="pdo-bB-wcf"/>
@@ -892,10 +895,6 @@
                                 <exclude reference="moe-Kg-fUR"/>
                                 <exclude reference="tCu-g1-xMH"/>
                                 <exclude reference="fRM-uz-1wr"/>
-                                <exclude reference="BRl-KW-Kwo"/>
-                                <exclude reference="Jvi-sJ-J2J"/>
-                                <exclude reference="WAK-K4-TJq"/>
-                                <exclude reference="Y1B-Lo-4Rc"/>
                                 <exclude reference="XA2-se-969"/>
                                 <exclude reference="azO-wQ-YPh"/>
                                 <exclude reference="sil-og-khe"/>
@@ -918,6 +917,10 @@
                                 <exclude reference="aIy-XH-Q16"/>
                                 <exclude reference="fKh-nE-Qa1"/>
                                 <exclude reference="uyp-B0-4vs"/>
+                                <exclude reference="BRl-KW-Kwo"/>
+                                <exclude reference="Jvi-sJ-J2J"/>
+                                <exclude reference="WAK-K4-TJq"/>
+                                <exclude reference="Y1B-Lo-4Rc"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -938,11 +941,6 @@
                                 <include reference="KmQ-pJ-DZK"/>
                                 <include reference="V5s-YK-71h"/>
                                 <exclude reference="f3o-sP-3pf"/>
-                                <include reference="Ata-Do-WCU"/>
-                                <include reference="Eij-od-P2V"/>
-                                <exclude reference="Iz1-NM-mQH"/>
-                                <include reference="gTn-sf-VRi"/>
-                                <exclude reference="sBB-Hq-yEP"/>
                                 <include reference="S27-PT-g3V"/>
                                 <include reference="h3l-zV-OKA"/>
                                 <include reference="JKg-ft-yH0"/>
@@ -961,6 +959,11 @@
                                 <include reference="Bs5-2v-AOY"/>
                                 <exclude reference="NOj-UE-wCe"/>
                                 <exclude reference="f3L-72-7Xx"/>
+                                <include reference="Ata-Do-WCU"/>
+                                <include reference="Eij-od-P2V"/>
+                                <exclude reference="Iz1-NM-mQH"/>
+                                <include reference="gTn-sf-VRi"/>
+                                <exclude reference="sBB-Hq-yEP"/>
                                 <exclude reference="RC5-PJ-E9E"/>
                                 <exclude reference="T4b-Pl-UPV"/>
                                 <include reference="jnm-kq-NMK"/>
@@ -979,10 +982,6 @@
                                 <exclude reference="SYS-Pq-fIN"/>
                                 <include reference="fRM-uz-1wr"/>
                                 <exclude reference="krd-Ni-HfV"/>
-                                <exclude reference="IUM-2c-aOM"/>
-                                <include reference="Jvi-sJ-J2J"/>
-                                <include reference="WAK-K4-TJq"/>
-                                <exclude reference="v9k-kw-xTx"/>
                                 <exclude reference="Puh-Wf-snI"/>
                                 <include reference="XA2-se-969"/>
                                 <include reference="azO-wQ-YPh"/>
@@ -1014,6 +1013,10 @@
                                 <include reference="aIy-XH-Q16"/>
                                 <include reference="fKh-nE-Qa1"/>
                                 <include reference="uyp-B0-4vs"/>
+                                <exclude reference="IUM-2c-aOM"/>
+                                <include reference="Jvi-sJ-J2J"/>
+                                <include reference="WAK-K4-TJq"/>
+                                <exclude reference="v9k-kw-xTx"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -1031,9 +1034,6 @@
                                 <exclude reference="zFU-xs-gw2"/>
                                 <exclude reference="Cch-Vw-p0f"/>
                                 <exclude reference="f3o-sP-3pf"/>
-                                <exclude reference="Iz1-NM-mQH"/>
-                                <include reference="pkg-FO-ihY"/>
-                                <exclude reference="sBB-Hq-yEP"/>
                                 <exclude reference="aPu-FD-C70"/>
                                 <exclude reference="b2A-lk-OhW"/>
                                 <exclude reference="Qwf-HE-JuA"/>
@@ -1042,6 +1042,9 @@
                                 <exclude reference="yqJ-eq-qSd"/>
                                 <exclude reference="NOj-UE-wCe"/>
                                 <exclude reference="f3L-72-7Xx"/>
+                                <exclude reference="Iz1-NM-mQH"/>
+                                <include reference="pkg-FO-ihY"/>
+                                <exclude reference="sBB-Hq-yEP"/>
                                 <exclude reference="RC5-PJ-E9E"/>
                                 <exclude reference="T4b-Pl-UPV"/>
                                 <include reference="tca-Nc-4hj"/>
@@ -1052,10 +1055,6 @@
                                 <include reference="moe-Kg-fUR"/>
                                 <exclude reference="SYS-Pq-fIN"/>
                                 <exclude reference="krd-Ni-HfV"/>
-                                <include reference="BRl-KW-Kwo"/>
-                                <exclude reference="IUM-2c-aOM"/>
-                                <include reference="Y1B-Lo-4Rc"/>
-                                <exclude reference="v9k-kw-xTx"/>
                                 <exclude reference="Puh-Wf-snI"/>
                                 <exclude reference="mGp-VA-nee"/>
                                 <include reference="sil-og-khe"/>
@@ -1073,17 +1072,27 @@
                                 <exclude reference="iMb-lx-SIw"/>
                                 <include reference="v08-3W-8Zr"/>
                                 <exclude reference="OXa-xC-zD1"/>
+                                <include reference="BRl-KW-Kwo"/>
+                                <exclude reference="IUM-2c-aOM"/>
+                                <include reference="Y1B-Lo-4Rc"/>
+                                <exclude reference="v9k-kw-xTx"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="courseCredits" destination="9ST-Sb-cKh" id="5Ym-iz-boJ"/>
+                        <outlet property="courseTitle" destination="OFo-RO-jby" id="b0c-A0-htn"/>
+                        <outlet property="examPercentage" destination="o1R-qT-21w" id="01F-xw-C50"/>
+                        <outlet property="gradeOverride" destination="HRC-Jp-lnB" id="TKw-CY-5bT"/>
+                        <outlet property="homeworkPercentage" destination="V2P-w0-eI4" id="s8O-5b-Wid"/>
+                        <outlet property="isScienceClass" destination="J6q-xk-ROF" id="DbM-KB-PMZ"/>
+                        <outlet property="otherPercentage" destination="xoN-8R-u4v" id="qYm-Ul-yTR"/>
+                        <outlet property="pointsOrPercentageSegmentOutlet" destination="ScW-Po-bvw" id="Yzr-yE-QVg"/>
+                        <outlet property="quizPercentage" destination="OGu-cE-fTo" id="ecy-Zm-Ngu"/>
+                        <outlet property="semesterPickerView" destination="Apx-Mh-ayh" id="RBA-fO-c3x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yjd-Wt-K42" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="10" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" id="U1K-Ws-VtZ">
-                    <rect key="frame" x="0.0" y="0.0" width="97" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
             </objects>
             <point key="canvasLocation" x="2998.5" y="666"/>
         </scene>
@@ -1322,7 +1331,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="emU-S6-JhD"/>
         <segue reference="Vok-FC-2un"/>
-        <segue reference="z8S-VM-flb"/>
     </inferredMetricsTieBreakers>
 </document>

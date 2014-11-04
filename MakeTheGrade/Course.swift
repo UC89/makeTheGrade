@@ -21,18 +21,53 @@ class Course: NSManagedObject {
     @NSManaged var quizesPerc: NSNumber
     @NSManaged var scienceCourse: NSNumber
     @NSManaged var semesterSeason: String
+    @NSManaged var gradeOverrideBool: Bool
+    
     @NSManaged var belongsTo: Semester
     @NSManaged var gradeList: NSSet
     
-
+    
+    class func addCourse(moc: NSManagedObjectContext, title:String,courseCredits:Float,courseExamsPerc:Float,courseQuizesPerc:Float,courseHwPerc:Float,courseOtherPerc:Float,isScienceCourse:Bool, isCoursePoints:Bool, gradeOverride:Float,semesterIDIn:Int) -> Course
+    {
+        let belongsToSemester = NSFetchRequest(entityName: "Semester")
+        belongsToSemester.returnsObjectsAsFaults = false
+        belongsToSemester.predicate = NSPredicate(format:"semesterID = %@","\(semesterIDIn)")
+        
+        var semester:NSArray = moc.executeFetchRequest(belongsToSemester, error: nil)!
+        var semesterSelected = semester[0] as Semester
+        
+        
+        let newCourse = NSEntityDescription.insertNewObjectForEntityForName("Course", inManagedObjectContext: moc) as Course
+        newCourse.courseTitle = title
+        newCourse.credits = courseCredits
+        newCourse.examsPerc = courseExamsPerc
+        newCourse.homeworkPerc = courseHwPerc
+        newCourse.quizesPerc = courseQuizesPerc
+        newCourse.otherPerc = courseOtherPerc
+        newCourse.pointsOrPercentage = isCoursePoints
+        newCourse.scienceCourse = isScienceCourse
+        
+        if (gradeOverride>0 )
+        {
+            newCourse.gradeOverrideBool = true
+            newCourse.gradeOverride = gradeOverride
+        }
+        else
+        {
+            newCourse.gradeOverrideBool = false
+        }
+        
+        println("New course Created for \(semesterIDIn)  belonging to \(newCourse.belongsTo)")
+        //println("Number of courses created: \(userSelected.returnNumberOfCourses())")
+        return newCourse
 
     // change [Int] to [Grade]
-    func getGradeList() -> [Int]
-    {
-        //return [Grade(entity: NSEntityDescription, insertIntoManagedObjectContext: <#NSManagedObjectContext!#>)]
-        return [10]
-    }
-    
+   // func getGradeList() -> [Int]
+   // {
+        //return [Grade(entity: NSEntityDescription, insertIntoManagedObjectContext: //)]
+    //    return [10]
+    //}
+  /*
     func getCourseAverage() -> Float
     {
         return 100.0
@@ -40,7 +75,7 @@ class Course: NSManagedObject {
     
     func letterGrade() -> String
     {
-        var points = self.getCourseAverage()
+        var points = getCourseAverage()
         var returnLetter = "Invalid"
         if (points > 93)
         {
@@ -62,4 +97,6 @@ class Course: NSManagedObject {
         return returnLetter
         
     }
+*/}
+        
 }
