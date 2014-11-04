@@ -19,7 +19,7 @@ class Semester: NSManagedObject
     @NSManaged var courseList: NSSet
     
     
-    class func addSemester(moc: NSManagedObjectContext,season: String, year: Int, semesterID:Int) -> Semester
+    class func addSemester(moc: NSManagedObjectContext,season: String, year: Int) -> Semester
     {
         let belongsToUser = NSFetchRequest(entityName: "Student")
         belongsToUser.returnsObjectsAsFaults = false
@@ -36,8 +36,8 @@ class Semester: NSManagedObject
         newSemester.semesterID = userSelected.returnNumberOfSemesters()
         newSemester.belongsTo = userSelected
         
-        println("New Season Created for \(season) in \(year) belonging to \(newSemester.belongsTo)")
-        println("\(newSemester.belongsTo.description)")
+        println("New Season Created for \(season) in \(year) belonging to \(newSemester.belongsTo) ID:\(newSemester.semesterID)")
+        //println("\(newSemester.belongsTo.description)")
         println("Number of semesters created: \(userSelected.returnNumberOfSemesters())")
         
         return newSemester

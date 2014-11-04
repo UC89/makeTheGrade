@@ -33,13 +33,16 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     
     func loadSemesterStringList()
     {
+        println("LoadingSemesterString List ------------------------------------")
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
         var semesterObjectList = Student.returnSemesterList(context)
+        println(semesterObjectList)
         for semester in semesterObjectList
         {
             var semesterString = ""
             semesterString = "semester object \(semester)"
+            println(semesterString)
             semesterStringList.append(semesterString)
         }
 
@@ -137,6 +140,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         loadSemesterStringList()
+        println("Passed loadSemesterStringList")
 
     }
     

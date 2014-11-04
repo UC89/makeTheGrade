@@ -22,6 +22,7 @@
     </entity>
     <entity name="Semester" representedClassName="MakeTheGrade.Semester" syncable="YES">
         <attribute name="season" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="semesterID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="semesterList" inverseEntity="Student" syncable="YES"/>
         <relationship name="courseList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="belongsTo" inverseEntity="Course" syncable="YES"/>
@@ -40,7 +41,7 @@
     <elements>
         <element name="Course" positionX="340" positionY="-27" width="128" height="223"/>
         <element name="Grade" positionX="27" positionY="9" width="128" height="103"/>
-        <element name="Semester" positionX="45" positionY="-148" width="128" height="103"/>
+        <element name="Semester" positionX="45" positionY="-148" width="128" height="120"/>
         <element name="Student" positionX="331" positionY="-216" width="128" height="180"/>
     </elements>
 </model>

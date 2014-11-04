@@ -75,10 +75,10 @@ class NewSemesterViewController: UIViewController, UIPickerViewDelegate {
    
     @IBAction func submitButtonPressed()
     {
-        var semesterIDIn = 1
+        
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
-        Semester.addSemester(context, season: semesterSelected, year: yearSelected,semesterID: semesterIDIn)
+        Semester.addSemester(context, season: semesterSelected, year: yearSelected)
         save()
         
     }
