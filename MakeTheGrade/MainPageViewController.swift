@@ -63,17 +63,25 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
     @IBOutlet var gradeTableView: UITableView!
    
     var userCreated: Bool = false
+    var courseObjectList:[Course] = []
     
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 5
+        var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        var courseObjectList  = Student.returnAllCourses(context)
+        println("Course object Lis ---------------\(courseObjectList.count)")
+        return courseObjectList.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "No Grades Entered")
-        cell.textLabel?.text = "\(indexPath.row)"
+        var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        var courseObjectList  = Student.returnAllCourses(context)
+        cell.textLabel?.text = "\(courseObjectList[indexPath.row].courseTitle)"
         return cell
     }
     
@@ -134,6 +142,11 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
             }
         }
         
+        var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        var courseObjectList  = Student.returnAllCourses(context)
+        println("Course Object List ------------\(courseObjectList.count)")
+        
         if (userLoaded==false)
         {
             userLoaded=loadStudent()
@@ -144,7 +157,4 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
-    
 }
