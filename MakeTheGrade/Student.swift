@@ -24,6 +24,16 @@ class Student: NSManagedObject {
     {
         return semesterList.count
     }
+    func returnNumberOfCourses() -> Int
+    {
+        var returnInt: Int = 0
+        for semester in semesterList
+        {
+            var semesterObj = semester as Semester
+            returnInt += semesterObj.courseList.count
+        }
+        return returnInt
+    }
     
     class func returnSemesterList(moc: NSManagedObjectContext) -> NSSet
     {
@@ -50,19 +60,24 @@ class Student: NSManagedObject {
         belongsToUser.predicate = NSPredicate(format: "studentName = %@","User")
         
         var user:NSArray = moc.executeFetchRequest(belongsToUser, error: nil)!
-        
-        var userSelected = user[0] as Student
-        
-        for semester in userSelected.semesterList
+        if (user.count>0)
         {
-            var semesterAsSemester = semester as Semester
-            
-            for course in semesterAsSemester.courseList
+            var userSelected = user[0] as Student
+            for semester in userSelected.semesterList
             {
-                returnSet.append(course as Course)
+                var semesterAsSemester = semester as Semester
+                
+                for course in semesterAsSemester.courseList
+                {
+                    returnSet.append(course as Course)
+                }
             }
-        }
             return returnSet
+        }
+        else
+        {
+            return []
+        }
     }
 
 }

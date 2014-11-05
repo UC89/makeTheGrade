@@ -22,9 +22,11 @@ class Course: NSManagedObject {
     @NSManaged var scienceCourse: NSNumber
     @NSManaged var semesterSeason: String
     @NSManaged var gradeOverrideBool: Bool
+    @NSManaged var courseID: NSNumber
     
     @NSManaged var belongsTo: Semester
     @NSManaged var gradeList: NSSet
+    
     
     
     class func addCourse(moc: NSManagedObjectContext, title:String,courseCredits:Float,courseExamsPerc:Float,courseQuizesPerc:Float,courseHwPerc:Float,courseOtherPerc:Float,isScienceCourse:Bool, isCoursePoints:Bool, gradeOverride:Float,semesterIDIn:Int) -> Course
@@ -35,6 +37,8 @@ class Course: NSManagedObject {
         
         var semester:NSArray = moc.executeFetchRequest(belongsToSemester, error: nil)!
         var semesterSelected = semester[0] as Semester
+        
+        var newCourseID:Int = semesterSelected.belongsTo.returnNumberOfCourses()
         
         
         let newCourse = NSEntityDescription.insertNewObjectForEntityForName("Course", inManagedObjectContext: moc) as Course
@@ -47,7 +51,10 @@ class Course: NSManagedObject {
         newCourse.pointsOrPercentage = isCoursePoints
         newCourse.scienceCourse = isScienceCourse
         newCourse.belongsTo = semesterSelected
+        newCourse.courseID = newCourseID
         
+        
+        println("NEWCOURSEID----------------\(newCourseID)")
         if (gradeOverride>0 )
         {
             newCourse.gradeOverrideBool = true

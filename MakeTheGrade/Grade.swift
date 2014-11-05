@@ -15,5 +15,24 @@ class Grade: NSManagedObject {
     @NSManaged var pointsPossible: NSNumber
     @NSManaged var percentage: NSNumber
     @NSManaged var relationship: Course
-
+    
+    class func addGrade(moc: NSManagedObjectContext, pointsEarnedIn: Float, pointsPossibleIn: Float, percentageIn: Float, courseIDIn:Int) -> Grade
+    {
+        let belongsToCourse = NSFetchRequest(entityName: "Course")
+        belongsToCourse.returnsObjectsAsFaults = false
+        belongsToCourse.predicate = NSPredicate(format:"courseID = %@","\(courseIDIn)")
+        
+        var course:NSArray = moc.executeFetchRequest(belongsToCourse, error: nil)!
+        var courseSelected = course[0] as Course
+        
+        let newGrade = NSEntityDescription.insertNewObjectForEntityForName("Grade", inManagedObjectContext: moc) as Grade
+        newGrade.pointsEarned = pointsEarnedIn
+        newGrade.pointsPossible = pointsPossibleIn
+        newGrade.percentage = percentageIn
+        newGrade.relationship = courseSelected 
+        
+        return newGrade
+        
+        
+    }
 }

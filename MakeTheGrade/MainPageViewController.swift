@@ -65,14 +65,21 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
     var userCreated: Bool = false
     var courseObjectList:[Course] = []
     
-
+//Need to find a way to make courseObjectList global for this view.
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
         var courseObjectList  = Student.returnAllCourses(context)
         println("Course object Lis ---------------\(courseObjectList.count)")
-        return courseObjectList.count
+        if (courseObjectList.count>0)
+        {
+            return courseObjectList.count
+        }
+        else
+        {
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -81,7 +88,14 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
         var courseObjectList  = Student.returnAllCourses(context)
+        if (courseObjectList.count>0)
+        {
         cell.textLabel?.text = "\(courseObjectList[indexPath.row].courseTitle)"
+        }
+        else
+        {
+            cell.textLabel?.text = "No Courses Entered"
+        }
         return cell
     }
     
@@ -120,6 +134,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
             {
                 println("In result.count if statement: \(result.count)")
                 println("User already created")
+                println("NUMBER OF COURSES------------------\(result[0].returnNumberOfCourses())")
                 return true
             }
             else

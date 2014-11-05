@@ -68,12 +68,6 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
-    
-
-    
-
-
-    
     @IBAction func pointsOrPercentageSegmentOutlet(sender:UISegmentedControl)
     {
         switch pointsOrPercentageSegmentOutlet.selectedSegmentIndex
