@@ -198,13 +198,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/NewCourseViewController.swift"
-            timestampString = "436856971.186422"
+            timestampString = "436859452.619508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "NewCourseViewController"
-            landmarkType = "3">
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "submitButtonPressed()"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -214,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/NewCourseViewController.swift"
-            timestampString = "436856971.186422"
+            timestampString = "436857451.508992"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
             landmarkName = "pointsOrPercentageSegmentOutlet(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -246,11 +246,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/NewCourseViewController.swift"
-            timestampString = "436856971.186422"
+            timestampString = "436859452.619508"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "NewCourseViewController"
             landmarkType = "3">
          </BreakpointContent>

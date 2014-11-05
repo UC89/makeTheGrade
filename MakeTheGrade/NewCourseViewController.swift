@@ -30,6 +30,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     var semesterStringList = ["1","2","3"]
     var semesterStringSelected:String = ""
     var semesterDict = [Int:String]()
+    var semesterIDSelected: Int!
  
     
     
@@ -103,16 +104,24 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
             break;
         }
     }
-    
-  /*  @IBAction func submitButtonPressed()
+
+    @IBAction func submitButtonPressed()
     {
-        gradeOverrideVar = gradeOverride.text as Float
+        let courseCreditsFloat = (courseCredits.text as NSString).floatValue
+        let courseExamsPercFloat = (examPercentage.text as NSString).floatValue
+        let quizPercentageFloat = (quizPercentage.text as NSString).floatValue
+        let homeworkPercentageFloat = (homeworkPercentage.text as NSString).floatValue
+        let otherPercentageFloat = (otherPercentage.text as NSString).floatValue
+        let gradeOverrideFloat = (gradeOverride.text as NSString).floatValue
+        
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
-        Course.addCourse(context, title: courseTitle.text, courseCredits: courseCredits.text, courseExamsPerc: examPercentage, courseQuizesPerc: quizPercentage.text, courseHwPerc: homeworkPercentage.text, courseOtherPerc: otherPercentage.text, isScienceCourse: scienceClassVar, isCoursePoints: pointsOrPercentageVar, gradeOverride: gradeOverrideVar, semesterIDIn: Int)
+        Course.addCourse(context, title: courseTitle.text, courseCredits: courseCreditsFloat, courseExamsPerc: courseExamsPercFloat, courseQuizesPerc: quizPercentageFloat, courseHwPerc: homeworkPercentageFloat, courseOtherPerc: otherPercentageFloat, isScienceCourse: scienceClassVar, isCoursePoints: pointsOrPercentageVar, gradeOverride: gradeOverrideFloat, semesterIDIn: semesterIDSelected)
         save()
+        println("Course added with name \(courseTitle.text) and semester id of \(semesterIDSelected)")
     }
-*/
+
+
     
     func numberOfComponentsInPickerView(semesterPickerView: UIPickerView) -> Int
     {
@@ -147,7 +156,8 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     
     func pickerView(semesterPickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
-        semesterStringSelected = semesterStringList[row]
+        semesterIDSelected = row
+        println("SemesterIDSelected -------------\(semesterIDSelected)")
     }
     
     
