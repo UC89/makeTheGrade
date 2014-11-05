@@ -29,12 +29,13 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     var gradeOverrideVar: Float = 0
     var semesterStringList = ["1","2","3"]
     var semesterStringSelected:String = ""
+    var semesterDict = [Int:String]()
  
     
     
 
-    /*
-    func loadSemesterStringList() -> NSSet
+    
+    func loadSemesterDictionary()
     {
         println("LoadingSemesterString List ------------------------------------")
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
@@ -47,14 +48,14 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         {
             var semesterInLoop = semester as Semester
             var semesterString = ""
+            var semesterIndex: Int
             semesterString = "\(semesterInLoop.season) \(semesterInLoop.year)"
+            semesterIndex = semesterInLoop.semesterID
             println(semesterString)
-            semesterStringList.append(semesterString)
+            semesterDict[semesterIndex] = semesterString
         }
-        println("\(semesterStringList)")
-        return semesterObjectList
     }
-*/
+
    
     func save()
     {
@@ -123,7 +124,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     {
         if (component==0)
         {
-            return semesterStringList.count
+            return semesterDict.count
         }
         else
         {
@@ -136,7 +137,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     {
         if (component==0)
         {
-            return semesterStringList[row]
+            return semesterDict[row]
         }
         else
         {
@@ -154,8 +155,11 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-      //  var semesterObjectList = loadSemesterStringList()
+        loadSemesterDictionary()
         println("Passed loadSemesterStringList")
+        println("--------------------------------------------------")
+        println("Trying to print semester Dict \(semesterDict)")
+        println("--------------------------------------------------")
 
     }
     
