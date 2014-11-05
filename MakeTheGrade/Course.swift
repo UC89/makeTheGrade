@@ -46,6 +46,7 @@ class Course: NSManagedObject {
         newCourse.otherPerc = courseOtherPerc
         newCourse.pointsOrPercentage = isCoursePoints
         newCourse.scienceCourse = isScienceCourse
+        newCourse.belongsTo = semesterSelected
         
         if (gradeOverride>0 )
         {
@@ -60,6 +61,8 @@ class Course: NSManagedObject {
         println("New course Created for \(semesterIDIn)  belonging to \(newCourse.belongsTo)")
         //println("Number of courses created: \(userSelected.returnNumberOfCourses())")
         return newCourse
+    }
+    
 
     // change [Int] to [Grade]
    // func getGradeList() -> [Int]
@@ -97,6 +100,6 @@ class Course: NSManagedObject {
         return returnLetter
         
     }
-*/}
+*/
         
 }

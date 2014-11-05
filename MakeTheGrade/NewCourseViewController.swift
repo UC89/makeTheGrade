@@ -28,24 +28,31 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     var pointsOrPercentageVar: Bool!
     var scienceClassVar: Bool!
     var gradeOverrideVar: Float = 0
-    var semesterStringList: [String] = [""]
+    var semesterStringList: [String] = ["1","2"]
+ 
+    
+    
 
     
-    func loadSemesterStringList()
+    func loadSemesterStringList() -> NSSet
     {
         println("LoadingSemesterString List ------------------------------------")
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
         var semesterObjectList = Student.returnSemesterList(context)
-        println(semesterObjectList)
+        println("returning semesterObjectList \(semesterObjectList)")
+   
+        println("--------------------------------------------")
         for semester in semesterObjectList
         {
+            var semesterInLoop = semester as Semester
             var semesterString = ""
-            semesterString = "semester object \(semester)"
+            semesterString = "\(semesterInLoop.season) \(semesterInLoop.year)"
             println(semesterString)
             semesterStringList.append(semesterString)
         }
-
+        println("\(semesterStringList)")
+        return semesterObjectList
     }
     func save()
     {
@@ -61,7 +68,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     {
         if (component==0)
         {
-            return semesterStringList.count
+            return loadSemesterStringList().count
         }
         else
         {
@@ -73,7 +80,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     {
         //The string order will correspond to the semesterID, therefore I can get the semster needed based on using t
         // the predicate for semesterid using the value picked from the picker view.
-
+        var semesterStringListInst = loadSemesterStringList()
         if (component==0)
         {
             return semesterStringList[row]
@@ -94,7 +101,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     }
 
     
-    @IBAction func pointsOrPercentageSegment(sender:UISegmentedControl)
+    @IBAction func pointsOrPercentageSegmentOutlet(sender:UISegmentedControl)
     {
         switch pointsOrPercentageSegmentOutlet.selectedSegmentIndex
             {
@@ -109,13 +116,14 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
             }
     }
     
-    @IBAction func isScienceClassSegment(sender:UISegmentedControl)
+    //This is working
+    @IBAction func isScienceClassSegmentOutlet(sender:UISegmentedControl)
     {
         switch isScienceClass.selectedSegmentIndex
             {
         case 0:
             scienceClassVar = true
-            println("Science Class selected")
+            println("Science Class selected \(scienceClassVar)")
         case 1:
             scienceClassVar = false
             println("Is not a science class")
@@ -139,7 +147,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        loadSemesterStringList()
+        var semesterObjectList = loadSemesterStringList()
         println("Passed loadSemesterStringList")
 
     }
