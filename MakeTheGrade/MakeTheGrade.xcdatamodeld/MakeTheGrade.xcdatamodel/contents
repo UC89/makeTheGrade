@@ -17,6 +17,7 @@
         <relationship name="gradeList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Grade" inverseName="belongsTo" inverseEntity="Grade" syncable="YES"/>
     </entity>
     <entity name="Grade" representedClassName="MakeTheGrade.Grade" syncable="YES">
+        <attribute name="gradeType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="percentage" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="pointsEarned" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="pointsPossible" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -42,7 +43,7 @@
     </entity>
     <elements>
         <element name="Course" positionX="340" positionY="-27" width="128" height="255"/>
-        <element name="Grade" positionX="27" positionY="9" width="128" height="103"/>
+        <element name="Grade" positionX="27" positionY="9" width="128" height="120"/>
         <element name="Semester" positionX="45" positionY="-148" width="128" height="120"/>
         <element name="Student" positionX="331" positionY="-216" width="128" height="180"/>
     </elements>

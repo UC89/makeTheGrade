@@ -16,8 +16,9 @@ class NewSemesterViewController: UIViewController, UIPickerViewDelegate {
     
     var semesters = ["Fall","Spring","Winter","Summer","Q1","Q2","Q3","Q4"]
     var years = [2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026]
-    var semesterSelected = "Fall"
-    var yearSelected = 2014
+    var semesterSelected = String()
+    var yearSelected = Int()
+    
     
     // returns the number of 'columns' to display.
     func numberOfComponentsInPickerView(semesterPickerView: UIPickerView) -> Int
@@ -48,10 +49,12 @@ class NewSemesterViewController: UIViewController, UIPickerViewDelegate {
         {
             return String(years[row])
         }
+        
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
+        
         if (component==0)
         {
             semesterSelected = semesters[row]
@@ -61,6 +64,7 @@ class NewSemesterViewController: UIViewController, UIPickerViewDelegate {
             yearSelected = years[row]
         }
     }
+    
     func save()
     {
         var appDel : AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
@@ -87,6 +91,15 @@ class NewSemesterViewController: UIViewController, UIPickerViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //Need to replace the row int with a var that updated depending on the currrent year and season.
+        semesterPickerView.selectRow(0, inComponent: 0, animated: true)
+        semesterPickerView.selectRow(14, inComponent: 1, animated: true)
+        semesterSelected = semesters[semesterPickerView.selectedRowInComponent(0)] as String
+        yearSelected = years[semesterPickerView.selectedRowInComponent(1)]
+        //semesterPickerView.selectRow(0, inComponent: 1, animated: true)
+        
+
 
     }
     

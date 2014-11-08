@@ -15,61 +15,43 @@ import CoreData
 
 class MainPageViewController: UIViewController, UITableViewDataSource {
     
-    /*
-    let cellIdentifier = "cellIdentifier"
-    @IBOutlet var gradesTableView: UITableView!
-    
-    
-    @IBAction func viewTapped (sender : AnyObject)
-    {
-        self.view.resignFirstResponder()
-    }
-    
-    //UITableViewDataSource Method
-    func numberOfSectionsInTableView(gradesTableView: UITableView) -> Int
-    {
-        return 1
-    }
-    
-    func tableView(gradesTableView: UITableView, numberOfRowsInSection section: Int) ->Int
-    {
-        return gradeCalc.numberOfGrades()
-    }
-    
-    func tableView(gradesTableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
-        var cell: UITableViewCell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "No grades Entered")
-        
-        cell.textLabel?.text = String("\(gradeCalc.returnAssignmentNames()[indexPath.row])   \(gradeCalc.returnGrades()[indexPath.row])")                                   //indexPath.row is the number of the row, this is almost
-                                                                 // like a for loop in the length of 
-                                                                // the tableview numberOfRowsInSection Function
-        return cell
-    }
-    
-    //UITableViewDelegate Methods
-    func tableView(gradesTableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
-    {
-        let alert = UIAlertController(title: "Item Selected", message: "You selected item \(indexPath.row)", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler:
-            {
-                (alert: UIAlertAction!) in println("An alert of type \(alert.style.hashValue) was tapped!")
-            }
-            ))
-        self.presentViewController(alert, animated: true, completion: nil)
-    }
-    */
-    
     @IBOutlet var gradeTableView: UITableView!
+    @IBOutlet var gpaButton: UIButton!
    
     var userCreated: Bool = false
     var courseObjectList:[Course] = []
+    var user = Student()
+    var appDel = AppDelegate()
+    var context = NSManagedObjectContext()
+    
+    //Set empty uservar up here
+    //var superUser = User()
+    func loadUser()
+    {
+        var appDel : AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+        var context:NSManagedObjectContext = appDel.managedObjectContext!
+        
+        //gets all User objects
+        var request = NSFetchRequest(entityName: "Student")
+        request.returnsObjectsAsFaults = false;
+        
+        //filters User objects to only return those with studentName = to "User"
+        request.predicate = NSPredicate(format:"studentName = %@", "User")
+        
+        var result: NSArray = context.executeFetchRequest(request, error: nil)!
+        
+        user = result[0] as Student
+    }
+    
+    func loadContext()
+    {
+        appDel = (UIApplication.sharedApplication().delegate as AppDelegate)
+        context = appDel.managedObjectContext!
+    }
     
 //Need to find a way to make courseObjectList global for this view.
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
         var courseObjectList  = Student.returnAllCourses(context)
         println("Course object Lis ---------------\(courseObjectList.count)")
         if (courseObjectList.count>0)
@@ -82,6 +64,20 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         }
     }
     
+    func numberOfSectionsInTableView(tableView:UITableView!)->Int
+    {
+        println("number of semesters-----------------------\(Student.returnSemesterList(context).count)")
+        return Student.returnSemesterList(context).count
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
+        var semesterList = Student.returnSemesterList(context)
+        var semesterArray = semesterList.allObjects
+        var thisSemester = semesterArray[section] as Semester
+        return "\(thisSemester.returnSemesterString())"
+    }
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "No Grades Entered")
@@ -103,7 +99,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         var userLoaded: Bool = false
-        
+        loadContext()
         //save function
         func save()
         {
@@ -166,6 +162,8 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         {
             userLoaded=loadStudent()
         }
+        
+        //Add funcs here to load superUser , can then add all required var declarations from superuser on top and initialize them down here.
     }
     
     override func didReceiveMemoryWarning() {

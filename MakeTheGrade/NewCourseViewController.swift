@@ -35,7 +35,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     
     
 
-    
+    //This function is called in viewdidload to load global var for this view
     func loadSemesterDictionary()
     {
         println("LoadingSemesterString List ------------------------------------")
@@ -138,6 +138,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     
     func pickerView(semesterPickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String!
     {
+        //Sort semesterDict
         if (component==0)
         {
             return semesterDict[row]
@@ -148,11 +149,16 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
+
+
+    
     func pickerView(semesterPickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         semesterIDSelected = row
         println("SemesterIDSelected -------------\(semesterIDSelected)")
     }
+    
+
     
     
     // Add UIAlert if percentages do not add up to 100% or total point amount.
@@ -164,6 +170,12 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         println("--------------------------------------------------")
         println("Trying to print semester Dict \(semesterDict)")
         println("--------------------------------------------------")
+        if (semesterDict.count>0)
+        {
+            self.semesterPickerView.selectRow(0, inComponent: 0, animated: true)
+            semesterIDSelected=0
+        }
+        
 
     }
     

@@ -16,7 +16,7 @@ class Grade: NSManagedObject {
     @NSManaged var percentage: NSNumber
     @NSManaged var relationship: Course
     
-    class func addGrade(moc: NSManagedObjectContext, pointsEarnedIn: Float, pointsPossibleIn: Float, percentageIn: Float, courseIDIn:Int) -> Grade
+    class func addGrade(moc: NSManagedObjectContext, pointsEarnedIn: Float, pointsPossibleIn: Float, percentageIn: Float, courseIDIn:Int,gradeType:String) -> Grade
     {
         let belongsToCourse = NSFetchRequest(entityName: "Course")
         belongsToCourse.returnsObjectsAsFaults = false

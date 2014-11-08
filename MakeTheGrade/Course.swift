@@ -28,6 +28,10 @@ class Course: NSManagedObject {
     @NSManaged var gradeList: NSSet
     
     
+    class func returnGrade() -> Float
+    {
+      return 0.00
+    }
     
     class func addCourse(moc: NSManagedObjectContext, title:String,courseCredits:Float,courseExamsPerc:Float,courseQuizesPerc:Float,courseHwPerc:Float,courseOtherPerc:Float,isScienceCourse:Bool, isCoursePoints:Bool, gradeOverride:Float,semesterIDIn:Int) -> Course
     {

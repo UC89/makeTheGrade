@@ -36,11 +36,20 @@ class Semester: NSManagedObject
         newSemester.semesterID = userSelected.returnNumberOfSemesters()
         newSemester.belongsTo = userSelected
         
+        //This is printing nil when default submit is pressed however it is adding the semester that it is set to for default??????
         println("New Season Created for \(season) in \(year) belonging to \(newSemester.belongsTo) ID:\(newSemester.semesterID)")
         //println("\(newSemester.belongsTo.description)")
         println("Number of semesters created: \(userSelected.returnNumberOfSemesters())")
         
         return newSemester
+    }
+    
+    func returnSemesterString() -> String
+    {
+        var semesterString: String = ""
+        
+        semesterString = ("\(self.season) \(self.year)")
+        return semesterString
     }
     
 }

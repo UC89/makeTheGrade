@@ -23,7 +23,7 @@ class NewGradeViewController: UIViewController {
         {
             return nil
         }
-        }()
+    }()
     
 
     
