@@ -24,8 +24,8 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     
     @IBOutlet var semesterPickerView: UIPickerView!
     
-    var pointsOrPercentageVar: Bool!
-    var scienceClassVar: Bool!
+    var pointsOrPercentageVar = true
+    var scienceClassVar = true
     var gradeOverrideVar: Float = 0
     var semesterStringList = ["1","2","3"]
     var semesterStringSelected:String = ""
@@ -79,9 +79,11 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
                     pointsOrPercentageVar = false
                     println("graded by Percentage")
                 default:
-                break;
+                    pointsOrPercentageVar = true
             }
     }
+    
+    
     
     //This is working
     @IBAction func isScienceClassSegmentOutlet(sender:UISegmentedControl)
@@ -95,7 +97,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
             scienceClassVar = false
             println("Is not a science class")
         default:
-            break;
+            scienceClassVar = true
         }
     }
 
@@ -149,6 +151,11 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         }
     }
     
+    func pickerView(semesterPickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let titleData = semesterDict[row]
+        var myTitle = NSAttributedString(string: titleData!, attributes: [NSFontAttributeName:UIFont(name: "Georgia", size: 15.0),NSForegroundColorAttributeName:UIColor(red: (158.0/255.0), green: (54.00/255.00), blue: (252.0/255.0), alpha: 1.0)])
+        return myTitle
+    }
 
 
     

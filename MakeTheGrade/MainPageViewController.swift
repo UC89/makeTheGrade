@@ -20,13 +20,15 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
    
     var userCreated: Bool = false
     var courseObjectList:[Course] = []
-    var user = Student()
+    var userGPA:Float = 3.000
     var appDel = AppDelegate()
     var context = NSManagedObjectContext()
     
+
+    
     //Set empty uservar up here
     //var superUser = User()
-    func loadUser()
+    func loadUserGPA()
     {
         var appDel : AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
@@ -40,7 +42,17 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         
         var result: NSArray = context.executeFetchRequest(request, error: nil)!
         
-        user = result[0] as Student
+        var user = result[0] as Student
+        
+        if (user.returnNumberOfGrades() > 0)
+        {
+            var userGPA = user.returnGPA()
+            var userGPAString = (NSString(format: "%.03f", userGPA))
+            println("Number of grades \(user.returnNumberOfGrades())")
+            println("GPA \(user.returnGPA())")
+            println("Setting userGPA in MakeTheGrade Main Page")
+            gpaButton.setTitle("\(userGPAString)", forState: UIControlState.Normal)
+        }
     }
     
     func loadContext()
@@ -49,11 +61,10 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         context = appDel.managedObjectContext!
     }
     
-//Need to find a way to make courseObjectList global for this view.
+//Need to find a way to make courseObjectList global for this view. done through calling a function in viewdidload and changing vars declared before viewdidload
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         var courseObjectList  = Student.returnAllCourses(context)
-        println("Course object Lis ---------------\(courseObjectList.count)")
         if (courseObjectList.count>0)
         {
             return courseObjectList.count
@@ -86,7 +97,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         var courseObjectList  = Student.returnAllCourses(context)
         if (courseObjectList.count>0)
         {
-        cell.textLabel?.text = "\(courseObjectList[indexPath.row].courseTitle)"
+        cell.textLabel?.text = "\(courseObjectList[indexPath.row].courseTitle) \(courseObjectList[indexPath.row].returnLetterGrade())"
         }
         else
         {
@@ -94,6 +105,16 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         }
         return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        var cell = tableView.cellForRowAtIndexPath(indexPath)
+        println("Selected \(indexPath.row) cell says \(cell?.textLabel?.text)")
+        
+        
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,7 +151,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
             {
                 println("In result.count if statement: \(result.count)")
                 println("User already created")
-                println("NUMBER OF COURSES------------------\(result[0].returnNumberOfCourses())")
+                println("\n NUMBER OF COURSES------------------\(result[0].returnNumberOfCourses()) \n")
                 return true
             }
             else
@@ -162,8 +183,20 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         {
             userLoaded=loadStudent()
         }
-        
+
         //Add funcs here to load superUser , can then add all required var declarations from superuser on top and initialize them down here.
+
+        loadUserGPA()
+        //rgpaButton.setTitle("\(userGPA)" , forState: UIControlState.Normal)
+      /*
+        if (user.returnNumberOfGrades() > 0)
+        {
+            println("")
+            println("Number of Grades is more than 0")
+            println("")
+            gpaButton.setTitle("/(user.returnGPA())", forState: UIControlState.Normal)
+        }
+        */
     }
     
     override func didReceiveMemoryWarning() {

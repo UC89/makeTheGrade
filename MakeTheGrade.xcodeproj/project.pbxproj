@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D3BC1061A10230F00FCBCCA /* courseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3BC1051A10230F00FCBCCA /* courseDetailView.swift */; };
 		4D3BE3B119FC494A00A26394 /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3BE3B019FC494A00A26394 /* Semester.swift */; };
 		4D3BE3B319FC494B00A26394 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3BE3B219FC494B00A26394 /* Student.swift */; };
 		4D3BE3B519FC494B00A26394 /* Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3BE3B419FC494B00A26394 /* Course.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D3BC1051A10230F00FCBCCA /* courseDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = courseDetailView.swift; sourceTree = "<group>"; };
 		4D3BE3B019FC494A00A26394 /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
 		4D3BE3B219FC494B00A26394 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		4D3BE3B419FC494B00A26394 /* Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Course.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				4D4302D019FB416900251092 /* NewSemesterViewController.swift */,
 				4D4302CC19FB414B00251092 /* NewGradeViewController.swift */,
 				4D4302CE19FB415900251092 /* NewCourseViewController.swift */,
+				4D3BC1051A10230F00FCBCCA /* courseDetailView.swift */,
 				4D4302DA19FB42B000251092 /* AddItemOptionViewController.swift */,
 				4D4FED0419F8898100B499A7 /* Main.storyboard */,
 				4D4FED0719F8898100B499A7 /* Images.xcassets */,
@@ -252,6 +255,7 @@
 				4D4302CD19FB414B00251092 /* NewGradeViewController.swift in Sources */,
 				4D3BE3B719FC494B00A26394 /* Grade.swift in Sources */,
 				4D4FED0119F8898100B499A7 /* MakeTheGrade.xcdatamodeld in Sources */,
+				4D3BC1061A10230F00FCBCCA /* courseDetailView.swift in Sources */,
 				4D4FED2319F890A500B499A7 /* GpaDetailViewController.swift in Sources */,
 				4D3BE3B519FC494B00A26394 /* Course.swift in Sources */,
 				4D4302D119FB416900251092 /* NewSemesterViewController.swift in Sources */,

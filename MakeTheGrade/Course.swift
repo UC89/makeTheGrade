@@ -22,16 +22,11 @@ class Course: NSManagedObject {
     @NSManaged var scienceCourse: NSNumber
     @NSManaged var semesterSeason: String
     @NSManaged var gradeOverrideBool: Bool
+    @NSManaged var isCourseFinished: Bool
     @NSManaged var courseID: NSNumber
     
     @NSManaged var belongsTo: Semester
     @NSManaged var gradeList: NSSet
-    
-    
-    class func returnGrade() -> Float
-    {
-      return 0.00
-    }
     
     class func addCourse(moc: NSManagedObjectContext, title:String,courseCredits:Float,courseExamsPerc:Float,courseQuizesPerc:Float,courseHwPerc:Float,courseOtherPerc:Float,isScienceCourse:Bool, isCoursePoints:Bool, gradeOverride:Float,semesterIDIn:Int) -> Course
     {
@@ -58,7 +53,7 @@ class Course: NSManagedObject {
         newCourse.courseID = newCourseID
         
         
-        println("NEWCOURSEID----------------\(newCourseID)")
+        println("\n NEWCOURSEID----------------\(newCourseID) \n")
         if (gradeOverride>0 )
         {
             newCourse.gradeOverrideBool = true
@@ -74,43 +69,36 @@ class Course: NSManagedObject {
         return newCourse
     }
     
-
-    // change [Int] to [Grade]
-   // func getGradeList() -> [Int]
-   // {
-        //return [Grade(entity: NSEntityDescription, insertIntoManagedObjectContext: //)]
-    //    return [10]
-    //}
-  /*
-    func getCourseAverage() -> Float
+    func calcCurrentGrade() -> Float
     {
-        return 100.0
+        var totalPointsEarned = Float()
+        var pointsTotalPos = Float()
+        
+        for grade in self.gradeList
+        {
+            var gradeObject = grade as Grade
+            totalPointsEarned += gradeObject.pointsEarned
+            pointsTotalPos += gradeObject.pointsPossible
+        }
+        println("Current grade \((totalPointsEarned)/pointsTotalPos)*100)")
+        return (totalPointsEarned/pointsTotalPos)*100
     }
     
-    func letterGrade() -> String
+    func returnLetterGrade() -> String
     {
-        var points = getCourseAverage()
-        var returnLetter = "Invalid"
-        if (points > 93)
+        var currentGrade = self.calcCurrentGrade()
+        if (currentGrade > 93)
         {
-            returnLetter = "A"
+            return "A"
         }
-        else if (points >= 90)
+        else if (currentGrade > 90)
         {
-            returnLetter = "A-"
+            return "A-"
         }
-        else if (points >= 87)
+        else
         {
-            returnLetter = "B+"
+            return "I DUNNO"
         }
-        else if (points >= 83)
-        {
-            returnLetter = "B"
-        }
-        
-        return returnLetter
-        
     }
-*/
         
 }
