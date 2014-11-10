@@ -14,7 +14,7 @@ class courseDetailView: UIViewController, UITableViewDataSource
     var courseGradeList  = ["Grade 1","Grade 2", "Grade 3"]
     var sectionList = ["Section1","Section2"]
     
-    var courseID: Int = Int()
+    var courseID: Int!
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {

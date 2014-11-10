@@ -23,6 +23,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
     var userGPA:Float = 3.000
     var appDel = AppDelegate()
     var context = NSManagedObjectContext()
+    var sendCourseID: Int = 0
     
 
     
@@ -109,12 +110,22 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         var cell = tableView.cellForRowAtIndexPath(indexPath)
+    
         println("Selected \(indexPath.row) cell says \(cell?.textLabel?.text)")
-        
+        sendCourseID = indexPath.row
+        performSegueWithIdentifier("clickCourseName", sender: cell)
         
     }
     
-    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if (segue.identifier == "clickCourseName")
+        {
+            var svc = segue.destinationViewController as courseDetailView
+            svc.courseID = sendCourseID
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
