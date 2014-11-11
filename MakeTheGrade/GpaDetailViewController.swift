@@ -10,7 +10,7 @@
 import UIKit
 
 class GpaDetailViewController: UIViewController {
-    
+    var currentUser = Student()
     
     override func viewDidLoad() {
         super.viewDidLoad()

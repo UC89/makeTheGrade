@@ -117,6 +117,8 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         
     }
     
+    
+    //Send vars to other view controller here
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
     {
         if (segue.identifier == "clickCourseName")
@@ -124,7 +126,17 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
             var svc = segue.destinationViewController as courseDetailView
             svc.courseID = sendCourseID
         }
+        else if (segue.identifier == "addOptionSegue")
+        {
+            var svc = segue.destinationViewController as AddOptionViewController
+        }
+        else if (segue.identifier == "gpaDetailSegue")
+        {
+            var svc = segue.destinationViewController as GpaDetailViewController
+            //svc.currentUser =
+        }
     }
+    
 
     
     override func viewDidLoad() {
