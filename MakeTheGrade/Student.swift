@@ -38,6 +38,7 @@ class Student: NSManagedObject {
         return returnInt
     }
     
+    
     class func returnSemesterList(moc: NSManagedObjectContext) -> NSSet
     {
         let returnArray = [Semester]()

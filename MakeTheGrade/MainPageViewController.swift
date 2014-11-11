@@ -24,51 +24,62 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
     var appDel = AppDelegate()
     var context = NSManagedObjectContext()
     var sendCourseID: Int = 0
-    var mainUser:[AnyObject] = []
+    var semesterCourseDict = [Int:NSMutableArray]()
+    var mainUser:[Student] = []
+  
 
-    
-    //Set empty uservar up here
-    //var superUser = User()
-    func loadUserGPA()
-    {
-        var appDel : AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
-        
-        //gets all User objects
-        var request = NSFetchRequest(entityName: "Student")
-        request.returnsObjectsAsFaults = false;
-        
-        //filters User objects to only return those with studentName = to "User"
-        request.predicate = NSPredicate(format:"studentName = %@", "User")
-        
-        var result: NSArray = context.executeFetchRequest(request, error: nil)!
-        
-        var user = result[0] as Student
-        
-        if (user.returnNumberOfGrades() > 0)
-        {
-            var userGPA = user.returnGPA()
-            var userGPAString = (NSString(format: "%.03f", userGPA))
-            println("Number of grades \(user.returnNumberOfGrades())")
-            println("GPA \(user.returnGPA())")
-            println("Setting userGPA in MakeTheGrade Main Page")
-            gpaButton.setTitle("\(userGPAString)", forState: UIControlState.Normal)
-        }
-    }
-    
     func loadContext()
     {
         appDel = (UIApplication.sharedApplication().delegate as AppDelegate)
         context = appDel.managedObjectContext!
     }
     
-//Need to find a way to make courseObjectList global for this view. done through calling a function in viewdidload and changing vars declared before viewdidload
+    func loadSemesterCourseDict()
+    {
+        println("\n In loadSemesterCourseDict")
+        var user = mainUser[0]
+        var index = 0
+        for semester in user.semesterList
+        {
+            var tempCourseList = NSMutableArray()
+            var semesterObj = semester as Semester
+            println("In semester \(semesterObj.returnSemesterString())")
+            for course in semesterObj.courseList
+            {
+                var courseObj = course as Course
+                println("Course obj print \(courseObj)")
+                println("current course in loop \(courseObj.courseTitle)")
+                tempCourseList.addObject(courseObj)
+                println("tempCourseList is \(tempCourseList)")
+            }
+            semesterCourseDict[index] = tempCourseList
+            //println("Semester with id \(index) has \(tempCourseList)")
+            index += 1
+        }
+        //println("semesterCourseDict is \(semesterCourseDict)\n")
+    }
+    
+    //FINAL FUNC
+    func loadUserGPA()
+    {
+        var user:Student = mainUser[0] as Student
+        
+        if (user.returnNumberOfGrades() > 0)
+        {
+            var userGPAString = (NSString(format: "%.03f", user.returnGPA()))
+            gpaButton.setTitle("\(userGPAString)", forState:UIControlState.Normal)
+        }
+    }
+
+    //Need to find a way to make courseObjectList global for this view. done through calling a function in viewdidload and changing vars declared before viewdidload
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        var courseObjectList  = Student.returnAllCourses(context)
-        if (courseObjectList.count>0)
+        var user:Student = mainUser[0] as Student
+        if (user.returnNumberOfCourses() > 0)
         {
-            return courseObjectList.count
+            var courseList:Array = semesterCourseDict[section]!
+            println("Semestercoursedict[count] = \(semesterCourseDict[section]) count: \(courseList.count)")
+            return courseList.count
         }
         else
         {
@@ -78,8 +89,8 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
     
     func numberOfSectionsInTableView(tableView:UITableView!)->Int
     {
-        println("number of semesters-----------------------\(Student.returnSemesterList(context).count)")
-        return Student.returnSemesterList(context).count
+        var user:Student = mainUser[0] as Student
+        return user.returnNumberOfSemesters()
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
@@ -92,6 +103,19 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "No Courses For This Semester")
+        println("IndexPath.Section = \(indexPath.section) indexPath.row = \(indexPath.row)")
+        var currentSemester = semesterCourseDict[indexPath.section]
+        //println("Current semster  = \(currentSemester)")
+      //  var currentCourse = currentSemester[indexPath.row]
+        var currentCourse: Course = currentSemester?.objectAtIndex(indexPath.row) as Course
+        cell.textLabel?.text = "\(currentCourse.courseTitle)"
+        
+        return cell
+        
+    }
+    /*func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    {
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "No Grades Entered")
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
@@ -99,6 +123,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         if (courseObjectList.count>0)
         {
         cell.textLabel?.text = "\(courseObjectList[indexPath.row].courseTitle) \(courseObjectList[indexPath.row].returnLetterGrade())"
+        println("indexPath is \(indexPath) and indexPath.row is \(indexPath.row)")
         }
         else
         {
@@ -106,6 +131,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         }
         return cell
     }
+*/
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
@@ -212,16 +238,8 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         //Add funcs here to load superUser , can then add all required var declarations from superuser on top and initialize them down here.
 
         loadUserGPA()
-        //rgpaButton.setTitle("\(userGPA)" , forState: UIControlState.Normal)
-      /*
-        if (user.returnNumberOfGrades() > 0)
-        {
-            println("")
-            println("Number of Grades is more than 0")
-            println("")
-            gpaButton.setTitle("/(user.returnGPA())", forState: UIControlState.Normal)
-        }
-        */
+        loadSemesterCourseDict()
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -229,3 +247,31 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         // Dispose of any resources that can be recreated.
     }
 }
+
+/*func loadUserGPA()
+{
+// var appDel : AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
+//  var context:NSManagedObjectContext = appDel.managedObjectContext!
+
+//gets all User objects
+var request = NSFetchRequest(entityName: "Student")
+request.returnsObjectsAsFaults = false;
+
+//filters User objects to only return those with studentName = to "User"
+request.predicate = NSPredicate(format:"studentName = %@", "User")
+
+var result: NSArray = context.executeFetchRequest(request, error: nil)!
+
+var user = result[0] as Student
+
+if (user.returnNumberOfGrades() > 0)
+{
+var userGPA = user.returnGPA()
+var userGPAString = (NSString(format: "%.03f", userGPA))
+println("Number of grades \(user.returnNumberOfGrades())")
+println("GPA \(user.returnGPA())")
+println("Setting userGPA in MakeTheGrade Main Page")
+gpaButton.setTitle("\(userGPAString)", forState: UIControlState.Normal)
+}
+}
+*/
