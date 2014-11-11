@@ -24,7 +24,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
     var appDel = AppDelegate()
     var context = NSManagedObjectContext()
     var sendCourseID: Int = 0
-    
+    var mainUser:[AnyObject] = []
 
     
     //Set empty uservar up here
@@ -133,7 +133,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         else if (segue.identifier == "gpaDetailSegue")
         {
             var svc = segue.destinationViewController as GpaDetailViewController
-            //svc.currentUser =
+            //svc.currentUser = mainUser[0] as Student
         }
     }
     
@@ -175,6 +175,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
                 println("In result.count if statement: \(result.count)")
                 println("User already created")
                 println("\n NUMBER OF COURSES------------------\(result[0].returnNumberOfCourses()) \n")
+                mainUser.append(result[0] as Student)
                 return true
             }
             else
@@ -193,6 +194,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
                 newUser.totalCredits=0
                 println("User created \(newUser.studentName)")
                 save()
+                mainUser.append(newUser)
                 return true
             }
         }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D2E870D1A11DEF5006D6D9F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D2E870C1A11DEF5006D6D9F /* Images.xcassets */; };
 		4D3BC1061A10230F00FCBCCA /* courseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3BC1051A10230F00FCBCCA /* courseDetailView.swift */; };
 		4D3BE3B119FC494A00A26394 /* Semester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3BE3B019FC494A00A26394 /* Semester.swift */; };
 		4D3BE3B319FC494B00A26394 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3BE3B219FC494B00A26394 /* Student.swift */; };
@@ -19,7 +20,6 @@
 		4D4FECFE19F8898100B499A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FECFD19F8898100B499A7 /* AppDelegate.swift */; };
 		4D4FED0119F8898100B499A7 /* MakeTheGrade.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FECFF19F8898100B499A7 /* MakeTheGrade.xcdatamodeld */; };
 		4D4FED0619F8898100B499A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D4FED0419F8898100B499A7 /* Main.storyboard */; };
-		4D4FED0819F8898100B499A7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D4FED0719F8898100B499A7 /* Images.xcassets */; };
 		4D4FED0B19F8898100B499A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D4FED0919F8898100B499A7 /* LaunchScreen.xib */; };
 		4D4FED1719F8898100B499A7 /* MakeTheGradeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FED1619F8898100B499A7 /* MakeTheGradeTests.swift */; };
 		4D4FED2119F88DAA00B499A7 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4FED2019F88DAA00B499A7 /* MainPageViewController.swift */; };
@@ -37,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4D2E870C1A11DEF5006D6D9F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4D3BC1051A10230F00FCBCCA /* courseDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = courseDetailView.swift; sourceTree = "<group>"; };
 		4D3BE3B019FC494A00A26394 /* Semester.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Semester.swift; sourceTree = "<group>"; };
 		4D3BE3B219FC494B00A26394 /* Student.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -51,7 +52,6 @@
 		4D4FECFD19F8898100B499A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D4FED0019F8898100B499A7 /* MakeTheGrade.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MakeTheGrade.xcdatamodel; sourceTree = "<group>"; };
 		4D4FED0519F8898100B499A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		4D4FED0719F8898100B499A7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4D4FED0A19F8898100B499A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		4D4FED1019F8898100B499A7 /* MakeTheGradeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MakeTheGradeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D4FED1519F8898100B499A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -79,6 +79,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D2E87011A11DDC7006D6D9F /* MakeTheGradeIcons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MakeTheGradeIcons;
+			path = ../../../Desktop/MakeTheGradeIcons;
+			sourceTree = "<group>";
+		};
 		4D4FECEF19F8898000B499A7 = {
 			isa = PBXGroup;
 			children = (
@@ -108,8 +116,9 @@
 				4D4302CE19FB415900251092 /* NewCourseViewController.swift */,
 				4D3BC1051A10230F00FCBCCA /* courseDetailView.swift */,
 				4D4302DA19FB42B000251092 /* AddItemOptionViewController.swift */,
+				4D2E870C1A11DEF5006D6D9F /* Images.xcassets */,
 				4D4FED0419F8898100B499A7 /* Main.storyboard */,
-				4D4FED0719F8898100B499A7 /* Images.xcassets */,
+				4D2E87011A11DDC7006D6D9F /* MakeTheGradeIcons */,
 				4D4FECFF19F8898100B499A7 /* MakeTheGrade.xcdatamodeld */,
 				4D4FED0919F8898100B499A7 /* LaunchScreen.xib */,
 				4D3BE3B619FC494B00A26394 /* Grade.swift */,
@@ -227,8 +236,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D4FED0619F8898100B499A7 /* Main.storyboard in Resources */,
+				4D2E870D1A11DEF5006D6D9F /* Images.xcassets in Resources */,
 				4D4FED0B19F8898100B499A7 /* LaunchScreen.xib in Resources */,
-				4D4FED0819F8898100B499A7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

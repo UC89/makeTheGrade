@@ -22,6 +22,7 @@ class Student: NSManagedObject {
     
 
     
+    
     func returnNumberOfSemesters() -> Int
     {
         return semesterList.count
