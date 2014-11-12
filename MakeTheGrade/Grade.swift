@@ -31,6 +31,7 @@ class Grade: NSManagedObject {
         
         let newGrade = NSEntityDescription.insertNewObjectForEntityForName("Grade", inManagedObjectContext: moc) as Grade
         println(" established grade object")
+        newGrade.assignmentName = titleIn
         newGrade.pointsEarned = pointsEarnedIn
         newGrade.pointsPossible = pointsPossibleIn
         newGrade.percentage = percentageIn

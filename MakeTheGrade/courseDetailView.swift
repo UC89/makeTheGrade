@@ -6,20 +6,23 @@
 //  Copyright (c) 2014 Taylor Somma. All rights reserved.
 //
 
+// Need to print lines to confirm which category grades are being added to
+
 import UIKit
 import CoreData
 
 class courseDetailView: UIViewController, UITableViewDataSource
 {
     @IBOutlet var courseDetailTableView: UITableView!
-    var courseGradeList  = ["Grade 1","Grade 2", "Grade 3"]
-    var sectionList = ["Section1","Section2"]
+    @IBOutlet var courseTitleLabel: UILabel!
     
     var appDel = AppDelegate()
     var context = NSManagedObjectContext()
     
     var courseGradeDict = [String:NSMutableArray]()
     var courseID: Int!
+    var gradeCats = ["Test","Quiz","HW","Other","Uncategorized"]
+    var gradeCatsActual = [String]()
     
     func loadContext()
     {
@@ -41,11 +44,14 @@ class courseDetailView: UIViewController, UITableViewDataSource
         
         var currentCourse = result[0] as Course
         
+        courseTitleLabel.text = currentCourse.courseTitle
+        
         var tempTestList = NSMutableArray()
         var tempQuizList = NSMutableArray()
         var tempHWList = NSMutableArray()
         var tempOtherList = NSMutableArray()
         var uncaughtList = NSMutableArray()
+
         
         for grade in currentCourse.gradeList
         {
@@ -71,42 +77,84 @@ class courseDetailView: UIViewController, UITableViewDataSource
                 uncaughtList.addObject(gradeObj)
             }
         }
+        if (tempTestList.count > 0 )
+        {
         courseGradeDict["Test"] = tempTestList
+        gradeCatsActual.append("Test")
+        }
+        if (tempQuizList.count > 0)
+        {
         courseGradeDict["Quiz"] = tempQuizList
+        gradeCatsActual.append("Quiz")
+        }
+        if (tempHWList.count > 0)
+        {
         courseGradeDict["HW"] = tempHWList
+        gradeCatsActual.append("HW")
+        }
+        if (tempOtherList.count > 0)
+        {
         courseGradeDict["Other"] = tempOtherList
+        gradeCatsActual.append("Other")
+        }
+        if (uncaughtList.count > 0)
+        {
         courseGradeDict["Uncategorized"] = uncaughtList
+        gradeCatsActual.append("Uncategorized")
+        }
         
         println("\(courseGradeDict)")
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 2
+        println("\n Making Table View in Course Detail View \n ------------------------------------")
+        var currentCat = gradeCatsActual[section]
+        var currentCatGrades = courseGradeDict[currentCat]
+        var currentCatGradesCount = currentCatGrades?.count
+        println("CurrentCatGradesCount = \(currentCatGradesCount)")
+        return currentCatGradesCount!
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return courseGradeDict.count
+        println("In numberOfSectionsInTableView returning \(gradeCatsActual) count of \(gradeCatsActual.count)")
+        return gradeCatsActual.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String
     {
-        return "Hello"
+        println("In titleForHeaderInSection and returning \(gradeCatsActual) section \(gradeCats[section])")
+        return gradeCatsActual[section]
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
+        println("\nMaking Cell--------------------------\n")
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "No Grades Entered")
-
-        if (courseGradeList.count>0)
+       // println("\n CourseGradeDict[gradeCats]indexPath.section]] returns \(courseGradeDict[gradeCats[indexPath.section]])")
+       /* if (courseGradeDict[gradeCats[indexPath.section]] != nil)
         {
-            cell.textLabel?.text = "\(courseGradeList[indexPath.row])"
+            var gradeListTemp = courseGradeDict[gradeCats[indexPath.section]]
+            var gradeObj = gradeListTemp?.objectAtIndex(indexPath.row) as Grade
+            
+            cell.textLabel?.text = "\(gradeObj.assignmentTitle)"
         }
         else
         {
             cell.textLabel?.text = "No Grades Entered"
         }
+        */
+        
+        var currentGradeCat = gradeCatsActual[indexPath.section]
+        println("Passed currentGradeCat")
+        var currentGradeCatGrades = courseGradeDict[currentGradeCat]
+        println("\nAbout to get currentGrade object for cell label")
+        println("-----------------------------------------\n\(currentGradeCatGrades)/n")
+        var currentGrade = currentGradeCatGrades?.objectAtIndex(indexPath.row) as Grade
+        println("Got currentGrade object \(currentGrade)")
+        cell.textLabel?.text = "\(currentGrade.assignmentTitle)"
+        println("Successfuly set cell lable")
         return cell
     }
     
