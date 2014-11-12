@@ -114,31 +114,14 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         return cell
         
     }
-    /*func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
-    {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "No Grades Entered")
-        var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
-        var context:NSManagedObjectContext = appDel.managedObjectContext!
-        var courseObjectList  = Student.returnAllCourses(context)
-        if (courseObjectList.count>0)
-        {
-        cell.textLabel?.text = "\(courseObjectList[indexPath.row].courseTitle) \(courseObjectList[indexPath.row].returnLetterGrade())"
-        println("indexPath is \(indexPath) and indexPath.row is \(indexPath.row)")
-        }
-        else
-        {
-            cell.textLabel?.text = "No Courses Entered"
-        }
-        return cell
-    }
-*/
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         var cell = tableView.cellForRowAtIndexPath(indexPath)
-    
-        println("Selected \(indexPath.row) cell says \(cell?.textLabel?.text)")
-        sendCourseID = indexPath.row
+        
+        var selectedSemester = semesterCourseDict[indexPath.section]
+        var selectedCourse = selectedSemester?.objectAtIndex(indexPath.row) as Course
+        sendCourseID = selectedCourse.courseID
         performSegueWithIdentifier("clickCourseName", sender: cell)
         
     }

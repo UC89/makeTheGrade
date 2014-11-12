@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class courseDetailView: UIViewController, UITableViewDataSource
 {
@@ -14,21 +15,84 @@ class courseDetailView: UIViewController, UITableViewDataSource
     var courseGradeList  = ["Grade 1","Grade 2", "Grade 3"]
     var sectionList = ["Section1","Section2"]
     
+    var appDel = AppDelegate()
+    var context = NSManagedObjectContext()
+    
+    var courseGradeDict = [String:NSMutableArray]()
     var courseID: Int!
+    
+    func loadContext()
+    {
+        appDel = (UIApplication.sharedApplication().delegate as AppDelegate)
+        context = appDel.managedObjectContext!
+    }
+    
+    func loadCourseGradeDict()
+    {
+        //gets all User objects
+        var request = NSFetchRequest(entityName: "Course")
+        request.returnsObjectsAsFaults = false;
+        
+        //filters User objects to only return those with studentName = to "User"
+        request.predicate = NSPredicate(format:"courseID = %@", "\(courseID)")
+        
+        var result: NSArray = context.executeFetchRequest(request, error: nil)!
+        println("printing result \(result)")
+        
+        var currentCourse = result[0] as Course
+        
+        var tempTestList = NSMutableArray()
+        var tempQuizList = NSMutableArray()
+        var tempHWList = NSMutableArray()
+        var tempOtherList = NSMutableArray()
+        var uncaughtList = NSMutableArray()
+        
+        for grade in currentCourse.gradeList
+        {
+            var gradeObj = grade as Grade
+            if (gradeObj.gradeType == "Test")
+            {
+                tempTestList.addObject(gradeObj)
+            }
+            else if (gradeObj.gradeType == "Quiz")
+            {
+                tempQuizList.addObject(gradeObj)
+            }
+            else if (gradeObj.gradeType == "HW")
+            {
+                tempHWList.addObject(gradeObj)
+            }
+            else if (gradeObj.gradeType == "Other")
+            {
+                tempOtherList.addObject(gradeObj)
+            }
+            else
+            {
+                uncaughtList.addObject(gradeObj)
+            }
+        }
+        courseGradeDict["Test"] = tempTestList
+        courseGradeDict["Quiz"] = tempQuizList
+        courseGradeDict["HW"] = tempHWList
+        courseGradeDict["Other"] = tempOtherList
+        courseGradeDict["Uncategorized"] = uncaughtList
+        
+        println("\(courseGradeDict)")
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 1
+        return 2
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return sectionList.count
+        return courseGradeDict.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String
     {
-        return "\(sectionList[section])  courseIDPassed \(courseID)"
+        return "Hello"
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -50,6 +114,8 @@ class courseDetailView: UIViewController, UITableViewDataSource
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        loadContext()
+        loadCourseGradeDict()
     }
 
     override func didReceiveMemoryWarning() {
