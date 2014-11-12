@@ -11,7 +11,7 @@ import CoreData
 
 class Grade: NSManagedObject {
 
-    @NSManaged var assignmentTitle: NSString
+    @NSManaged var assignmentName: NSString
     @NSManaged var pointsEarned: NSNumber
     @NSManaged var pointsPossible: NSNumber
     @NSManaged var percentage: NSNumber
@@ -48,7 +48,7 @@ class Grade: NSManagedObject {
         var returnFloat = Float()
         
         returnFloat = (self.pointsEarned/self.pointsPossible)*(self.percentage/100)
-        println("Returning grade of \(returnFloat) for assignment \(assignmentTitle) for course\(self.belongsTo.courseTitle)")
+        println("Returning grade of \(returnFloat) for assignment \(assignmentName) for course\(self.belongsTo.courseTitle)")
         return returnFloat
     }
 }
