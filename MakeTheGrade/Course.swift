@@ -69,9 +69,102 @@ class Course: NSManagedObject {
         return newCourse
     }
     
-    func calcCurrentGrade() -> Float
+    func calcCurrentGradeForPercentage() -> Float
     {
-        var totalPointsEarned = Float()
+        var testPointsEarnedTotal = 0.0
+        var testPercentageComplete = 0.0
+        var quizPointEarnedTotal = 0.0
+        var quizPercentageComplete = 0.0
+        var hwPointsEarnedTotal = 0.0
+        var hwPercentageComplete = 0.0
+        var otherPointsEarnedTotal = 0.0
+        var otherPercentageComplete = 0.0
+        
+        var testTaken = false
+        var quizTaken = false
+        var hwTaken = false
+        var otherTaken = false
+
+        var totalPoints = 0.0
+        
+        var testPercOfHundred = 0.0
+        var quizPercOfHundred = 0.0
+        var hwPercOfHundred = 0.0
+        var otherPercOfHundred = 0.0
+        
+        var categoryGrades = [Double]()
+        
+        for grade in gradeList
+        {
+            var gradeObj = grade as Grade
+            if (gradeObj.gradeType == "Test")
+            {
+                testPointsEarnedTotal += (gradeObj.pointsEarned / gradeObj.pointsPossible) * gradeObj.percentage
+                testPercentageComplete += gradeObj.percentage
+                testTaken = true
+            }
+            else if (gradeObj.gradeType == "Quiz")
+            {
+                quizPointEarnedTotal += (gradeObj.pointsEarned / gradeObj.pointsPossible) * gradeObj.percentage
+                quizPercentageComplete += gradeObj.percentage
+                quizTaken = true
+            }
+            else if (gradeObj.gradeType == "HW")
+            {
+                hwPointsEarnedTotal += (gradeObj.pointsEarned / gradeObj.pointsPossible) * gradeObj.percentage
+                hwPercentageComplete += gradeObj.percentage
+                hwTaken = true
+            }
+            else if (gradeObj.gradeType == "Other")
+            {
+                otherPointsEarnedTotal += (gradeObj.pointsEarned / gradeObj.pointsPossible) * gradeObj.percentage
+                otherPercentageComplete += gradeObj.percentage
+                otherTaken = true
+            }
+            else
+            {
+                println("----------------Error---------In Course calcCurrentGradeModel-----------")
+            }
+        }
+        
+        if (testTaken)
+        {
+            var testGradeAdd = (100/testPercentageComplete) * testPointsEarnedTotal
+            var gradeToAdd = testGradeAdd * examsPerc
+            categoryGrades.append(gradeToAdd)
+        }
+        
+        if (quizTaken)
+        {
+            var quizGradeAdd = (100/quizPercentageComplete) * quizPointEarnedTotal
+            var gradeToAdd = quizGradeAdd * quizesPerc
+            categoryGrades.append(gradeToAdd)
+        }
+        
+        if (hwTaken)
+        {
+            var hwGradeAdd = (100/hwPercentageComplete) * hwPointsEarnedTotal
+            var gradeToAdd = hwGradeAdd * homeworkPerc
+            categoryGrades.append(gradeToAdd)
+        }
+       
+        if (otherTaken)
+        {
+            var otherGradeToAdd = (100/otherPercentageComplete) * otherPointsEarnedTotal
+            var gradeToAdd = otherGradeToAdd * otherPerc
+            categoryGrades.append(gradeToAdd)
+        }
+        
+        for grade in categoryGrades
+        {
+            totalPoints += grade
+        }
+        
+        var numberOfCategories:Double = Double(categoryGrades.count)
+        var returnGrade = totalPoints / numberOfCategories
+        return Float(returnGrade)
+        
+        /*var totalPointsEarned = Float()
         var pointsTotalPos = Float()
         
         for grade in self.gradeList
@@ -82,11 +175,12 @@ class Course: NSManagedObject {
         }
         println("Current grade \((totalPointsEarned)/pointsTotalPos)*100)")
         return (totalPointsEarned/pointsTotalPos)*100
+        */
     }
     
     func returnLetterGrade() -> String
     {
-        var currentGrade = self.calcCurrentGrade()
+        var currentGrade = self.calcCurrentGradeForPercentage()
         if (currentGrade > 93)
         {
             return "A"

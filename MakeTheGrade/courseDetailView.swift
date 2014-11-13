@@ -153,7 +153,8 @@ class courseDetailView: UIViewController, UITableViewDataSource
         println("-----------------------------------------\n\(currentGradeCatGrades)/n")
         var currentGrade = currentGradeCatGrades?.objectAtIndex(indexPath.row) as Grade
         println("Got currentGrade object \(currentGrade)")
-        cell.textLabel?.text = "\(currentGrade.assignmentName)"
+        var currentGradeForCell = Float(currentGrade.pointsEarned) / Float(currentGrade.pointsPossible)
+        cell.textLabel?.text = "\(currentGrade.assignmentName) Grade: \(currentGradeForCell)"
         println("Successfuly set cell lable")
         return cell
     }

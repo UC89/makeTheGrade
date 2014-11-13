@@ -123,7 +123,7 @@ class Student: NSManagedObject {
             for course in semesterAsSemester.courseList
             {
                 var courseObject = course as Course
-                var currentGrade = courseObject.calcCurrentGrade()
+                var currentGrade = courseObject.calcCurrentGradeForPercentage()
                 totalGrades += currentGrade
                 totalCredits += courseObject.credits
                 if (currentGrade > 93)
