@@ -40,7 +40,7 @@ class courseDetailView: UIViewController, UITableViewDataSource
         request.predicate = NSPredicate(format:"courseID = %@", "\(courseID)")
         
         var result: NSArray = context.executeFetchRequest(request, error: nil)!
-        println("printing result \(result)")
+        //println("printing result \(result)")
         
         var currentCourse = result[0] as Course
         
@@ -108,29 +108,29 @@ class courseDetailView: UIViewController, UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        println("\n Making Table View in Course Detail View \n ------------------------------------")
+        //println("\n Making Table View in Course Detail View \n ------------------------------------")
         var currentCat = gradeCatsActual[section]
         var currentCatGrades = courseGradeDict[currentCat]
         var currentCatGradesCount = currentCatGrades?.count
-        println("CurrentCatGradesCount = \(currentCatGradesCount)")
+        //println("CurrentCatGradesCount = \(currentCatGradesCount)")
         return currentCatGradesCount!
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        println("In numberOfSectionsInTableView returning \(gradeCatsActual) count of \(gradeCatsActual.count)")
+        //println("In numberOfSectionsInTableView returning \(gradeCatsActual) count of \(gradeCatsActual.count)")
         return gradeCatsActual.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String
     {
-        println("In titleForHeaderInSection and returning \(gradeCatsActual) section \(gradeCats[section])")
+        //println("In titleForHeaderInSection and returning \(gradeCatsActual) section \(gradeCats[section])")
         return gradeCatsActual[section]
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        println("\nMaking Cell--------------------------\n")
+       // println("\nMaking Cell--------------------------\n")
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "No Grades Entered")
        // println("\n CourseGradeDict[gradeCats]indexPath.section]] returns \(courseGradeDict[gradeCats[indexPath.section]])")
        /* if (courseGradeDict[gradeCats[indexPath.section]] != nil)

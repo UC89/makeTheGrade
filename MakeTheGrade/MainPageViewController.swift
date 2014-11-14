@@ -43,14 +43,14 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         {
             var tempCourseList = NSMutableArray()
             var semesterObj = semester as Semester
-            println("In semester \(semesterObj.returnSemesterString())")
+            //println("In semester \(semesterObj.returnSemesterString())")
             for course in semesterObj.courseList
             {
                 var courseObj = course as Course
-                println("Course obj print \(courseObj)")
-                println("current course in loop \(courseObj.courseTitle)")
+                //println("Course obj print \(courseObj)")
+                //println("current course in loop \(courseObj.courseTitle)")
                 tempCourseList.addObject(courseObj)
-                println("tempCourseList is \(tempCourseList)")
+                //println("tempCourseList is \(tempCourseList)")
             }
             semesterCourseDict[index] = tempCourseList
             //println("Semester with id \(index) has \(tempCourseList)")
@@ -78,7 +78,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         if (user.returnNumberOfCourses() > 0)
         {
             var courseList:Array = semesterCourseDict[section]!
-            println("Semestercoursedict[count] = \(semesterCourseDict[section]) count: \(courseList.count)")
+            //println("Semestercoursedict[count] = \(semesterCourseDict[section]) count: \(courseList.count)")
             return courseList.count
         }
         else
@@ -104,12 +104,13 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "No Courses For This Semester")
-        println("IndexPath.Section = \(indexPath.section) indexPath.row = \(indexPath.row)")
+        //println("IndexPath.Section = \(indexPath.section) indexPath.row = \(indexPath.row)")
         var currentSemester = semesterCourseDict[indexPath.section]
         //println("Current semster  = \(currentSemester)")
       //  var currentCourse = currentSemester[indexPath.row]
         var currentCourse: Course = currentSemester?.objectAtIndex(indexPath.row) as Course
-        cell.textLabel?.text = "\(currentCourse.courseTitle) \(currentCourse.calcCurrentGradeForPercentage())"
+        var currentCourseGradeString = NSString(format:"%.02f" , currentCourse.calcCurrentGradeForPercentage())
+        cell.textLabel?.text = "\(currentCourse.courseTitle) \(currentCourseGradeString)"
         
         return cell
         
@@ -181,15 +182,15 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
             println("printing result \(result)")
             if (result.count > 0)
             {
-                println("In result.count if statement: \(result.count)")
-                println("User already created")
-                println("\n NUMBER OF COURSES------------------\(result[0].returnNumberOfCourses()) \n")
+                //println("In result.count if statement: \(result.count)")
+                //println("User already created")
+                //println("\n NUMBER OF COURSES------------------\(result[0].returnNumberOfCourses()) \n")
                 mainUser.append(result[0] as Student)
                 return true
             }
             else
             {
-                println("User not found")
+                //println("User not found")
                 var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
                 var context:NSManagedObjectContext = appDel.managedObjectContext!
                 
@@ -201,7 +202,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
                 newUser.totalNonSciCredits=0
                 newUser.overallGpa=0
                 newUser.totalCredits=0
-                println("User created \(newUser.studentName)")
+                //println("User created \(newUser.studentName)")
                 save()
                 mainUser.append(newUser)
                 return true
@@ -211,7 +212,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
         var courseObjectList  = Student.returnAllCourses(context)
-        println("Course Object List ------------\(courseObjectList.count)")
+        //println("Course Object List ------------\(courseObjectList.count)")
         
         if (userLoaded==false)
         {

@@ -129,29 +129,32 @@ class Course: NSManagedObject {
         
         if (testTaken)
         {
-            var testGradeAdd = (100/testPercentageComplete) * testPointsEarnedTotal
-            var gradeToAdd = testGradeAdd * examsPerc
+            var testGradeAdd = ((100/testPercentageComplete) * testPointsEarnedTotal) / 100
+            var gradeToAdd = testGradeAdd
+            println("Test Grade Info/n----------------------")
+            println("testGradeAddVar = \(testGradeAdd) (100/testPercentageComplete *testPointsEarnedTotal)")
+            println("gradeToAdd = \(gradeToAdd)  testGradeAdd * examsPerc")
             categoryGrades.append(gradeToAdd)
         }
         
         if (quizTaken)
         {
-            var quizGradeAdd = (100/quizPercentageComplete) * quizPointEarnedTotal
-            var gradeToAdd = quizGradeAdd * quizesPerc
+            var quizGradeAdd = ((100/quizPercentageComplete) * quizPointEarnedTotal) / 100
+            var gradeToAdd = quizGradeAdd
             categoryGrades.append(gradeToAdd)
         }
         
         if (hwTaken)
         {
-            var hwGradeAdd = (100/hwPercentageComplete) * hwPointsEarnedTotal
-            var gradeToAdd = hwGradeAdd * homeworkPerc
+            var hwGradeAdd = ((100/hwPercentageComplete) * hwPointsEarnedTotal) / 100
+            var gradeToAdd = hwGradeAdd
             categoryGrades.append(gradeToAdd)
         }
        
         if (otherTaken)
         {
-            var otherGradeToAdd = (100/otherPercentageComplete) * otherPointsEarnedTotal
-            var gradeToAdd = otherGradeToAdd * otherPerc
+            var otherGradeToAdd = ((100/otherPercentageComplete) * otherPointsEarnedTotal) / 100
+            var gradeToAdd = otherGradeToAdd
             categoryGrades.append(gradeToAdd)
         }
         
@@ -161,7 +164,12 @@ class Course: NSManagedObject {
         }
         
         var numberOfCategories:Double = Double(categoryGrades.count)
-        var returnGrade = totalPoints / numberOfCategories
+        var returnGrade = (totalPoints / numberOfCategories) * 100
+        println("-----------------------------------------------")
+        println("Grade for: \(courseTitle)")
+        println("numberOfCategories = \(numberOfCategories)")
+        println("totalPoints = \(totalPoints)")
+        println("------------------------------------------------")
         return Float(returnGrade)
         
         /*var totalPointsEarned = Float()
