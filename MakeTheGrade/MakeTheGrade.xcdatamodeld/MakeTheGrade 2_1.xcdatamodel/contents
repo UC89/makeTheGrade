@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="0.5" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="14A389" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="0.5" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Course" representedClassName="MakeTheGrade.Course" syncable="YES">
         <attribute name="courseGrade" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="courseID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="courseTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="credits" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="examsPerc" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="goalGrade" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gradeOverride" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="gradeOverrideBool" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="homeworkPerc" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -23,6 +24,7 @@
         <relationship name="belongsTo" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="gradeList" inverseEntity="Course" syncable="YES"/>
     </entity>
     <entity name="Semester" representedClassName="MakeTheGrade.Semester" syncable="YES">
+        <attribute name="goalGPA" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="season" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="semesterID" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -30,6 +32,7 @@
         <relationship name="courseList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Course" inverseName="belongsTo" inverseEntity="Course" syncable="YES"/>
     </entity>
     <entity name="Student" representedClassName="MakeTheGrade.Student" syncable="YES">
+        <attribute name="goalGPA" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="nonSciGpa" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="overallGpa" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="sciGpa" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -40,9 +43,9 @@
         <relationship name="semesterList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Semester" inverseName="belongsTo" inverseEntity="Semester" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Course" positionX="340" positionY="-27" width="128" height="255"/>
+        <element name="Course" positionX="340" positionY="-27" width="128" height="270"/>
         <element name="Grade" positionX="27" positionY="9" width="128" height="103"/>
-        <element name="Semester" positionX="45" positionY="-148" width="128" height="120"/>
-        <element name="Student" positionX="331" positionY="-216" width="128" height="163"/>
+        <element name="Semester" positionX="45" positionY="-148" width="128" height="135"/>
+        <element name="Student" positionX="331" positionY="-216" width="128" height="178"/>
     </elements>
 </model>

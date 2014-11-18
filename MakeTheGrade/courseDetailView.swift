@@ -15,6 +15,7 @@ class courseDetailView: UIViewController, UITableViewDataSource
 {
     @IBOutlet var courseDetailTableView: UITableView!
     @IBOutlet var courseTitleLabel: UILabel!
+    @IBOutlet var letterGradeHeader: UILabel!
     
     var appDel = AppDelegate()
     var context = NSManagedObjectContext()
@@ -45,6 +46,7 @@ class courseDetailView: UIViewController, UITableViewDataSource
         var currentCourse = result[0] as Course
         
         courseTitleLabel.text = currentCourse.courseTitle
+        letterGradeHeader.text = currentCourse.returnLetterGrade()
         
         var tempTestList = NSMutableArray()
         var tempQuizList = NSMutableArray()
@@ -165,6 +167,7 @@ class courseDetailView: UIViewController, UITableViewDataSource
         // Do any additional setup after loading the view.
         loadContext()
         loadCourseGradeDict()
+      
     }
 
     override func didReceiveMemoryWarning() {

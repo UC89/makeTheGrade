@@ -24,9 +24,12 @@ class Course: NSManagedObject {
     @NSManaged var gradeOverrideBool: Bool
     @NSManaged var isCourseFinished: Bool
     @NSManaged var courseID: NSNumber
-    
+    @NSManaged var goalGrade: NSNumber
     @NSManaged var belongsTo: Semester
     @NSManaged var gradeList: NSSet
+    
+    var currentGrade: Double = Double()
+    
     
     class func addCourse(moc: NSManagedObjectContext, title:String,courseCredits:Float,courseExamsPerc:Float,courseQuizesPerc:Float,courseHwPerc:Float,courseOtherPerc:Float,isScienceCourse:Bool, isCoursePoints:Bool, gradeOverride:Float,semesterIDIn:Int) -> Course
     {
@@ -67,6 +70,21 @@ class Course: NSManagedObject {
         println("New course Created for \(semesterIDIn)  belonging to \(newCourse.belongsTo)")
         //println("Number of courses created: \(userSelected.returnNumberOfCourses())")
         return newCourse
+    }
+    
+    func calcCurrentGradeForPoints() -> Float
+    {
+        var totalPointsEarned = 0.0
+        var totalPointsPossible = 0.0
+        
+        for grade in gradeList
+        {
+            var gradeObj = grade as Grade
+            totalPointsEarned += gradeObj.pointsEarned
+            totalPointsPossible += gradeObj.pointsPossible
+        }
+        
+        return Float(totalPointsEarned/totalPointsPossible)
     }
     
     func calcCurrentGradeForPercentage() -> Float
@@ -170,25 +188,12 @@ class Course: NSManagedObject {
         println("numberOfCategories = \(numberOfCategories)")
         println("totalPoints = \(totalPoints)")
         println("------------------------------------------------")
+        currentGrade = returnGrade
         return Float(returnGrade)
-        
-        /*var totalPointsEarned = Float()
-        var pointsTotalPos = Float()
-        
-        for grade in self.gradeList
-        {
-            var gradeObject = grade as Grade
-            totalPointsEarned += gradeObject.pointsEarned
-            pointsTotalPos += gradeObject.pointsPossible
-        }
-        println("Current grade \((totalPointsEarned)/pointsTotalPos)*100)")
-        return (totalPointsEarned/pointsTotalPos)*100
-        */
     }
     
     func returnLetterGrade() -> String
     {
-        var currentGrade = self.calcCurrentGradeForPercentage()
         if (currentGrade > 93)
         {
             return "A"
@@ -197,10 +202,50 @@ class Course: NSManagedObject {
         {
             return "A-"
         }
+        else if (currentGrade > 86)
+        {
+            return "B+"
+        }
+        else if (currentGrade > 83)
+        {
+            return "B"
+        }
+        else if (currentGrade > 80)
+        {
+            return "B-"
+        }
+        else if (currentGrade > 76)
+        {
+            return "C+"
+        }
+        else if (currentGrade > 73)
+        {
+            return "C"
+        }
+        else if (currentGrade > 70)
+        {
+            return "C-"
+        }
+        else if (currentGrade > 66)
+        {
+            return "D+"
+        }
+        else if (currentGrade > 63)
+        {
+            return "D"
+        }
+        else if (currentGrade > 60)
+        {
+            return "D-"
+        }
+        else if (currentGrade > 0)
+        {
+            return "F"
+        }
         else
         {
-            return "I DUNNO"
+            return "Error"
         }
     }
-        
+    
 }

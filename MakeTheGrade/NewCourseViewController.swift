@@ -32,6 +32,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     var semesterDict = [Int:String]()
     var semesterIDSelected: Int!
  
+    // Add context and delegate variables and function to initialize them for coredata here
     
     
 
@@ -110,6 +111,15 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         let otherPercentageFloat = (otherPercentage.text as NSString).floatValue
         let gradeOverrideFloat = (gradeOverride.text as NSString).floatValue
         
+        if (pointsOrPercentageVar != true)
+        {
+            //Add absolute value declaration in here
+            if ((quizPercentageFloat + homeworkPercentageFloat + otherPercentageFloat + courseExamsPercFloat)-100.0 > 0.5)
+            {
+                println("-------------------/nYour percentages are invalid/n--------------------")
+            }
+        }
+        
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
         Course.addCourse(context, title: courseTitle.text, courseCredits: courseCreditsFloat, courseExamsPerc: courseExamsPercFloat, courseQuizesPerc: quizPercentageFloat, courseHwPerc: homeworkPercentageFloat, courseOtherPerc: otherPercentageFloat, isScienceCourse: scienceClassVar, isCoursePoints: pointsOrPercentageVar, gradeOverride: gradeOverrideFloat, semesterIDIn: semesterIDSelected)
@@ -179,7 +189,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         println("--------------------------------------------------")
         if (semesterDict.count>0)
         {
-            self.semesterPickerView.selectRow(0, inComponent: 0, animated: true)
+            semesterPickerView.selectRow(0, inComponent: 0, animated: true)
             semesterIDSelected=0
         }
         

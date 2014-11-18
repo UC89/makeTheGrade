@@ -18,6 +18,7 @@ class Student: NSManagedObject {
     @NSManaged var sciGpa: NSNumber
     @NSManaged var overallGpa: NSNumber
     @NSManaged var nonSciGpa: NSNumber
+    @NSManaged var goalGPA: NSNumber
     @NSManaged var semesterList: NSSet
     
 
@@ -122,49 +123,57 @@ class Student: NSManagedObject {
             var semesterAsSemester = semester as Semester
             for course in semesterAsSemester.courseList
             {
+                var currentGrade = Float(0.0)
                 var courseObject = course as Course
-                var currentGrade = courseObject.calcCurrentGradeForPercentage()
+                if (courseObject.pointsOrPercentage == true)
+                {
+                    currentGrade = courseObject.calcCurrentGradeForPoints()
+                }
+                else if (courseObject.pointsOrPercentage == false)
+                {
+                    currentGrade = courseObject.calcCurrentGradeForPercentage()
+                }
                 totalGrades += currentGrade
                 totalCredits += courseObject.credits
                 if (currentGrade > 93)
                 {
-                    gradePoints += 4.0
+                    gradePoints += (4.0 * courseObject.credits)
                 }
                 else if (currentGrade > 90)
                 {
-                    gradePoints += 3.7
+                    gradePoints += (3.7 * courseObject.credits)
                 }
                 else if (currentGrade > 87)
                 {
-                    gradePoints += 3.4
+                    gradePoints += (3.4 * courseObject.credits)
                 }
                 else if (currentGrade > 83)
                 {
-                    gradePoints += 3.0
+                    gradePoints += (3.0 *  courseObject.credits)
                 }
                 else if (currentGrade > 80)
                 {
-                    gradePoints += 2.7
+                    gradePoints += (2.7 * courseObject.credits)
                 }
                 else if (currentGrade > 77)
                 {
-                    gradePoints += 2.3
+                    gradePoints += (2.3 * courseObject.credits)
                 }
                 else if (currentGrade > 73)
                 {
-                    gradePoints += 2.0
+                    gradePoints += (2.0 * courseObject.credits)
                 }
                 else if (currentGrade > 70)
                 {
-                    gradePoints += 1.7
+                    gradePoints += (1.7 * courseObject.credits)
                 }
                 else if (currentGrade > 67)
                 {
-                    gradePoints += 1.3
+                    gradePoints += (1.3 * courseObject.credits)
                 }
                 else if (currentGrade > 63)
                 {
-                    gradePoints += 1.0
+                    gradePoints += (1.0 * courseObject.credits)
                 }
                 else
                 {
@@ -172,6 +181,9 @@ class Student: NSManagedObject {
                 }
             }
         }
+        println("\n----------------------------------------------------")
+        println("Calculating GPA with \(gradePoints) grade points")
+        println("Credits: \(totalCredits) for \(totalGrades) classes")
         println("GPA is \(gradePoints/totalCredits)")
         println("Returning GPA\n")
         return (gradePoints/totalCredits)
