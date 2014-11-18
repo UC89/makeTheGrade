@@ -72,6 +72,30 @@ class Course: NSManagedObject {
         return newCourse
     }
     
+    func printCourseDetails()
+    {
+        println("/n/n----------------------------------------------/n/n")
+        println("Course Title: \(courseTitle)")
+        println("Course ID: \(courseID)")
+        println("Credits: \(credits)")
+        println("pointsOrPercentage Value: \(pointsOrPercentage)")
+        println("Science Class Value: \(scienceCourse)")
+    }
+    
+    func calcCurrentGrade() -> Float
+    {
+        var returnGrade: Float = Float()
+        if (pointsOrPercentage == 1)
+        {
+            returnGrade = calcCurrentGradeForPoints()
+        }
+        else
+        {
+            returnGrade = calcCurrentGradeForPercentage()
+        }
+        return returnGrade
+    }
+    
     func calcCurrentGradeForPoints() -> Float
     {
         var totalPointsEarned = 0.0
@@ -84,7 +108,8 @@ class Course: NSManagedObject {
             totalPointsPossible += gradeObj.pointsPossible
         }
         
-        return Float(totalPointsEarned/totalPointsPossible)
+        currentGrade = (totalPointsEarned/totalPointsPossible)
+        return Float(totalPointsEarned/totalPointsPossible) * 100
     }
     
     func calcCurrentGradeForPercentage() -> Float
@@ -194,6 +219,14 @@ class Course: NSManagedObject {
     
     func returnLetterGrade() -> String
     {
+        if (pointsOrPercentage == true)
+        {
+            currentGrade = Double(self.calcCurrentGradeForPoints())
+        }
+        else if (pointsOrPercentage == false)
+        {
+            currentGrade = Double(self.calcCurrentGradeForPercentage())
+        }
         if (currentGrade > 93)
         {
             return "A"
@@ -244,7 +277,7 @@ class Course: NSManagedObject {
         }
         else
         {
-            return "Error"
+            return "--"
         }
     }
     

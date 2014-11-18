@@ -53,7 +53,8 @@ class courseDetailView: UIViewController, UITableViewDataSource
         var tempHWList = NSMutableArray()
         var tempOtherList = NSMutableArray()
         var uncaughtList = NSMutableArray()
-
+        
+        currentCourse.printCourseDetails()
         
         for grade in currentCourse.gradeList
         {

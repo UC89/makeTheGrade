@@ -111,7 +111,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         let otherPercentageFloat = (otherPercentage.text as NSString).floatValue
         let gradeOverrideFloat = (gradeOverride.text as NSString).floatValue
         
-        if (pointsOrPercentageVar != true)
+        if (pointsOrPercentageVar == false)
         {
             //Add absolute value declaration in here
             if ((quizPercentageFloat + homeworkPercentageFloat + otherPercentageFloat + courseExamsPercFloat)-100.0 > 0.5)

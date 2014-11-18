@@ -362,6 +362,7 @@
                         <outlet property="courseDetailTableView" destination="Fdv-Ey-clS" id="cwW-7m-cmo"/>
                         <outlet property="courseTitleLabel" destination="MZW-zX-KHm" id="4zq-o0-F5Q"/>
                         <outlet property="letterGradeHeader" destination="wqU-fw-Spf" id="RGd-i2-v7h"/>
+                        <segue destination="D16-Qq-P6g" kind="show" identifier="showGradeDetail" id="G1I-aI-TwE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t6j-jo-ihV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1470,7 +1471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CJt-J5-i4a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2044.5" y="1380"/>
+            <point key="canvasLocation" x="2134.5" y="1400.25"/>
         </scene>
         <!--Gpa Detail View Controller-->
         <scene sceneID="psw-1o-hpc">
@@ -1549,7 +1550,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="oJX-6v-upA"/>
+        <segue reference="0yw-bH-uFe"/>
+        <segue reference="G1I-aI-TwE"/>
         <segue reference="8tM-63-c1f"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>

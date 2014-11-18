@@ -109,7 +109,7 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         //println("Current semster  = \(currentSemester)")
       //  var currentCourse = currentSemester[indexPath.row]
         var currentCourse: Course = currentSemester?.objectAtIndex(indexPath.row) as Course
-        var currentCourseGradeString = NSString(format:"%.02f" , currentCourse.calcCurrentGradeForPercentage())
+        var currentCourseGradeString = NSString(format:"%.02f" , currentCourse.calcCurrentGrade())
         cell.textLabel?.text = "\(currentCourse.courseTitle) \(currentCourseGradeString)"
         
         return cell

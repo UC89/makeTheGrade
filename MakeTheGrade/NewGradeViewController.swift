@@ -29,6 +29,8 @@ class NewGradeViewController: UIViewController,UIPickerViewDelegate{
     var categoryIDList = ["Test","Quiz","HW","Other"]
     var categoryID = String()
     
+    var gradeIDSent = Int()
+    
     func loadContext()
     {
         appDel = (UIApplication.sharedApplication().delegate as AppDelegate)
