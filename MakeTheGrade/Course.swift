@@ -72,6 +72,29 @@ class Course: NSManagedObject {
         return newCourse
     }
     
+    func returnTotalPointsPossible() -> Float
+    {
+        var totalPoints = Float(examsPerc) + Float(quizesPerc) + Float(homeworkPerc) + Float(otherPerc)
+        return Float(totalPoints)
+    }
+    func returnPointsNeededToMakeGrade() -> Float
+    {
+        var returnPoints = Float()
+        returnPoints = (goalGrade/100 * returnTotalPointsPossible()) - (calcCurrentGrade() * returnTotalPointsPossible())
+        return returnPoints
+    }
+    
+    func goalMet() -> Bool
+    {
+        if (returnPointsNeededToMakeGrade() <= 0)
+        {
+            return true
+        }
+        else
+        {
+            return false
+        }
+    }
     func printCourseDetails()
     {
         println("/n/n----------------------------------------------/n/n")
