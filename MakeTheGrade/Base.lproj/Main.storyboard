@@ -1495,12 +1495,6 @@
                                     <segue destination="umo-L4-X2T" kind="show" id="Vok-FC-2un"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Here will be a graph showing GPA over time " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDb-AI-4xO">
-                                <rect key="frame" x="129" y="260" width="342" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWR-UM-Zyh">
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1511,35 +1505,79 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="138" y="20" width="124" height="21"/>
+                                </variation>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Goal GPA" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hXc-Ju-w1G">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <color key="textColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="152" y="111" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your goal GPA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeA-Zu-cot">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="130" y="73" width="141" height="21"/>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ej5-JU-Ra1">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="338" y="16" width="49" height="30"/>
+                                </variation>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxc-dS-AxP">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="What if?">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="177" y="185" width="57" height="30"/>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="UUk-Bc-ALh" firstAttribute="centerX" secondItem="mDb-AI-4xO" secondAttribute="centerX" id="FO6-O7-Nrp"/>
                             <constraint firstItem="UUk-Bc-ALh" firstAttribute="leading" secondItem="927-EK-wSV" secondAttribute="trailing" constant="77" id="PHM-5q-ZBm"/>
                             <constraint firstItem="UUk-Bc-ALh" firstAttribute="top" secondItem="9bu-J1-5Hj" secondAttribute="bottom" id="QUQ-iK-6RI"/>
-                            <constraint firstItem="K5h-2g-A66" firstAttribute="top" secondItem="mDb-AI-4xO" secondAttribute="bottom" constant="318" id="T5W-KJ-WjC"/>
                             <constraint firstItem="927-EK-wSV" firstAttribute="baseline" secondItem="UUk-Bc-ALh" secondAttribute="baseline" id="hCb-Yn-hr5"/>
-                            <constraint firstItem="mDb-AI-4xO" firstAttribute="centerX" secondItem="sDK-NX-arX" secondAttribute="centerX" id="mcd-V1-SAV"/>
                         </constraints>
                         <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="hXc-Ju-w1G"/>
+                                <exclude reference="ZeA-Zu-cot"/>
+                                <exclude reference="ej5-JU-Ra1"/>
+                                <exclude reference="Vxc-dS-AxP"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="hCb-Yn-hr5"/>
-                                <exclude reference="FO6-O7-Nrp"/>
                                 <exclude reference="PHM-5q-ZBm"/>
                                 <exclude reference="QUQ-iK-6RI"/>
-                                <exclude reference="mcd-V1-SAV"/>
-                                <exclude reference="T5W-KJ-WjC"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="constraints">
                                 <include reference="hCb-Yn-hr5"/>
-                                <include reference="FO6-O7-Nrp"/>
                                 <include reference="PHM-5q-ZBm"/>
                                 <include reference="QUQ-iK-6RI"/>
-                                <include reference="mcd-V1-SAV"/>
-                                <include reference="T5W-KJ-WjC"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="hXc-Ju-w1G"/>
+                                <include reference="ZeA-Zu-cot"/>
+                                <include reference="ej5-JU-Ra1"/>
+                                <include reference="Vxc-dS-AxP"/>
                             </mask>
                         </variation>
                     </view>
@@ -1550,9 +1588,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0yw-bH-uFe"/>
+        <segue reference="Vok-FC-2un"/>
         <segue reference="G1I-aI-TwE"/>
-        <segue reference="8tM-63-c1f"/>
+        <segue reference="0yw-bH-uFe"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

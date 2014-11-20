@@ -84,6 +84,134 @@ class Course: NSManagedObject {
         return returnPoints
     }
     
+    //This func also sets isCourseFinished
+    func returnCourseCompletePercentage() -> Double
+    {
+        
+        if (isCourseFinished == true)
+        {
+            return 100.0
+        }
+        else if (gradeOverride > 0)
+        {
+            isCourseFinished = true
+            return 100.0
+        }
+        if (pointsOrPercentage == true)
+        {
+            var pointsCompleted = 0.0
+            var pointsPossible = 0.0
+            pointsPossible = examsPerc + quizesPerc + homeworkPerc + otherPerc
+            for grade in gradeList
+            {
+                var gradeObj = grade as Grade
+                pointsCompleted += gradeObj.pointsPossible
+            }
+            if (((pointsCompleted/pointsPossible)*100) >= 100)
+            {
+                isCourseFinished = true
+            }
+            return (pointsCompleted/pointsPossible)*100
+        }
+        else if (pointsOrPercentage == false)
+        {
+            var percentageComplete = 0.0
+            for grade in gradeList
+            {
+                //Possible gradetypes ["Test","Quiz","HW","Other"]
+                var gradeObj = grade as Grade
+                if (gradeObj.gradeType == "Test")
+                {
+                    percentageComplete += (gradeObj.percentage * examsPerc)/100
+                }
+                else if (gradeObj.gradeType == "Quiz")
+                {
+                    percentageComplete += (gradeObj.percentage * quizesPerc)/100
+                }
+                else if (gradeObj.gradeType == "HW")
+                {
+                    percentageComplete += (gradeObj.percentage * homeworkPerc)/100
+                }
+                else if (gradeObj.gradeType == "Other")
+                {
+                    percentageComplete += (gradeObj.percentage * otherPerc)/100
+                }
+            }
+            if (percentageComplete >= 100.0)
+            {
+                isCourseFinished = true
+            }
+            
+            return percentageComplete
+        }
+        else
+        {
+            println("Error calculating percentage")
+            return -1.0
+        }
+    }
+    
+    func returnCategoryCompleteDictionary() -> Array<Double>
+    {
+        //exam,quiz,hw,other
+        var testComplete = 0.0
+        var quizComplete = 0.0
+        var hwComplete = 0.0
+        var otherComplete = 0.0
+        
+        if (pointsOrPercentage == true)
+        {
+            for grade in gradeList
+            {
+                var gradeObj = grade as Grade
+                if (gradeObj.gradeType == "Test")
+                {
+                    testComplete += gradeObj.pointsPossible
+                }
+                else if (gradeObj.gradeType == "Quiz")
+                {
+                    quizComplete += gradeObj.pointsPossible
+                }
+                else if (gradeObj.gradeType == "HW")
+                {
+                    hwComplete += gradeObj.pointsPossible
+                }
+                else if (gradeObj.gradeType == "Other")
+                {
+                    otherComplete += gradeObj.pointsPossible
+                }
+            }
+            return [(testComplete / examsPerc)*100,(quizComplete / quizesPerc)*100,(hwComplete / quizesPerc)*100, (otherComplete / otherPerc)*100]
+        }
+        else if (pointsOrPercentage == false)
+        {
+            for grade in gradeList
+            {
+                var gradeObj = grade as Grade
+                if (gradeObj.gradeType == "Test")
+                {
+                    testComplete += (gradeObj.percentage * examsPerc)/100
+                }
+                else if (gradeObj.gradeType == "Quiz")
+                {
+                    quizComplete += (gradeObj.percentage * quizesPerc)/100
+                }
+                else if (gradeObj.gradeType == "HW")
+                {
+                    hwComplete += (gradeObj.percentage * homeworkPerc)/100
+                }
+                else if (gradeObj.gradeType == "Other")
+                {
+                    otherComplete += (gradeObj.percentage * otherPerc)/100
+                }
+            }
+            return [(testComplete / examsPerc)*100,(quizComplete / quizesPerc)*100,(hwComplete / quizesPerc)*100, (otherComplete / otherPerc)*100]
+        }
+       var percentageArray = [0.0,0.0,0.0,0.0]
+       return percentageArray
+    }
+    
+    
     func goalMet() -> Bool
     {
         if (returnPointsNeededToMakeGrade() <= 0)
@@ -97,12 +225,18 @@ class Course: NSManagedObject {
     }
     func printCourseDetails()
     {
-        println("/n/n----------------------------------------------/n/n")
+        println("\n\n----------------------------------------------\n\n")
         println("Course Title: \(courseTitle)")
         println("Course ID: \(courseID)")
         println("Credits: \(credits)")
         println("pointsOrPercentage Value: \(pointsOrPercentage)")
         println("Science Class Value: \(scienceCourse)")
+        println("Percentage of Course completed: \(returnCourseCompletePercentage())")
+        println("Categories complete Dict: \(returnCategoryCompleteDictionary())")
+        println("Exams Perc Value: \(examsPerc)")
+        println("Quiz perc Value: \(quizesPerc)")
+        println("HW perc Value: \(homeworkPerc)")
+        println("Other Perc Value: \(otherPerc)")
     }
     
     func calcCurrentGrade() -> Float
