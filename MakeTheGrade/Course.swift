@@ -212,6 +212,138 @@ class Course: NSManagedObject {
     }
     
     
+    //*************************************************************************
+    //
+    //NEED TO ADD CORRECT RETURN VALUE FOR POINTS CLASS***!!!!!!!!!!
+    //
+    func canAddGrade(gradeCategoryIn: String, gradePercentageIn: Float) -> Bool
+    {
+        // from newGrade View Controller
+        //var categoryIDList = ["Test","Quiz","HW","Other"]
+        if (pointsOrPercentage == false)
+        {
+            var categoryCompletionPercentage = returnCategoryCompleteDictionary()
+            if gradeCategoryIn == "Test"
+            {
+                var categoryComplete: Double = categoryCompletionPercentage[0]
+                println("\n-------------------------------------------------------")
+                println("Can add grade for percentage: categoryComplete: \(categoryComplete) gradePercentageIn: \(gradePercentageIn) examsPercentage: \(examsPerc)")
+                if ((Double(categoryComplete) + Double(gradePercentageIn)) > 100.0)
+                {
+                    return false
+                }
+                else
+                {
+                    return true
+                }
+            }
+            else if (gradeCategoryIn == "Quiz")
+            {
+                var categoryComplete: Double = categoryCompletionPercentage[1]
+                if ((Double(categoryComplete) + Double(gradePercentageIn)) > 100.0)
+                {
+                    return false
+                }
+                else
+                {
+                    return true
+                }
+            }
+            else if (gradeCategoryIn == "HW")
+            {
+                var categoryComplete: Double = categoryCompletionPercentage[2]
+                println("\n-------------------------------------------------------")
+                println("Can add grade for percentage: categoryComplete: \(categoryComplete) gradePercentageIn: \(gradePercentageIn) examsPercentage: \(examsPerc)")
+                println("-----------------------------------------------------\n")
+                if ((Double(categoryComplete) + Double(gradePercentageIn)) > 100.0)
+                {
+                    return false
+                }
+                else
+                {
+                    return true
+                }
+            }
+            else if (gradeCategoryIn == "Other")
+            {
+                var categoryComplete: Double = categoryCompletionPercentage[3]
+                if ((Double(categoryComplete) + Double(gradePercentageIn)) > Double(otherPerc))
+                {
+                    return false
+                }
+                else
+                {
+                    return true
+                }
+            }
+            else
+            {
+                return false
+            }
+         }
+        else if (pointsOrPercentage == true)
+        {
+            var gradeCompleteList = returnCategoryCompleteDictionary()
+            if (gradeCategoryIn == "Test")
+            {
+                var totalPoints = (gradeCompleteList[0] * Double(examsPerc))/100
+                if ((Double(totalPoints) + Double(gradePercentageIn)) > Double(examsPerc))
+                {
+                    return false
+                }
+                else
+                {
+                    return true
+                }
+            }
+            else if (gradeCategoryIn == "Quiz")
+            {
+                var totalPoints = (gradeCompleteList[1] * Double(quizesPerc))/100
+                if ((Double(totalPoints) + Double(gradePercentageIn)) > Double(quizesPerc))
+                {
+                    return false
+                }
+                else
+                {
+                    return true
+                }
+            }
+            else if (gradeCategoryIn == "HW")
+            {
+                var totalPoints = (gradeCompleteList[2] * Double(homeworkPerc))/100
+                if ((Double(totalPoints) + Double(gradePercentageIn)) > Double(homeworkPerc))
+                {
+                    return false
+                }
+                else
+                {
+                    return true
+                }
+            }
+            else if (gradeCategoryIn == "Other")
+            {
+                var totalPoints = (gradeCompleteList[3] * Double(homeworkPerc))/100
+                if ((Double(totalPoints) + Double(gradePercentageIn)) > Double(homeworkPerc))
+                {
+                    return false
+                }
+                else
+                {
+                    return true
+                }
+            }
+            else
+            {
+                return false
+            }
+        }
+        else
+        {
+            return false
+        }
+        
+    }
+
     func goalMet() -> Bool
     {
         if (returnPointsNeededToMakeGrade() <= 0)
@@ -223,6 +355,7 @@ class Course: NSManagedObject {
             return false
         }
     }
+    
     func printCourseDetails()
     {
         println("\n\n----------------------------------------------\n\n")
@@ -323,7 +456,7 @@ class Course: NSManagedObject {
             }
             else
             {
-                println("----------------Error---------In Course calcCurrentGradeModel-----------")
+                println("\n----------------Error---------\nIn Course calcCurrentGradeModel\n-----------\n")
             }
         }
         
@@ -384,6 +517,7 @@ class Course: NSManagedObject {
         {
             currentGrade = Double(self.calcCurrentGradeForPercentage())
         }
+        
         if (currentGrade > 93)
         {
             return "A"

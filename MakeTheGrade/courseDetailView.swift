@@ -150,15 +150,19 @@ class courseDetailView: UIViewController, UITableViewDataSource
         */
         
         var currentGradeCat = gradeCatsActual[indexPath.section]
-        println("Passed currentGradeCat")
+        //println("Passed currentGradeCat")
         var currentGradeCatGrades = courseGradeDict[currentGradeCat]
-        println("\nAbout to get currentGrade object for cell label")
-        println("-----------------------------------------\n\(currentGradeCatGrades)/n")
+        //println("\nAbout to get currentGrade object for cell label")
+        //println("-----------------------------------------\n\(currentGradeCatGrades)/n")
         var currentGrade = currentGradeCatGrades?.objectAtIndex(indexPath.row) as Grade
-        println("Got currentGrade object \(currentGrade)")
-        var currentGradeForCell = Float(currentGrade.pointsEarned) / Float(currentGrade.pointsPossible)
-        cell.textLabel?.text = "\(currentGrade.assignmentName) Grade: \(currentGradeForCell)"
-        println("Successfuly set cell lable")
+        //println("Got currentGrade object \(currentGrade)")
+        
+        //(NSString(format: "%.03f", user.returnGPA()))
+        
+        var currentGradeForCell = NSString(format: "%.01f", (Float(currentGrade.pointsEarned) / Float(currentGrade.pointsPossible)) * 100)
+        
+        cell.textLabel?.text = "\(currentGrade.assignmentName) Grade: \(currentGradeForCell) Percentage: \(currentGrade.percentage)"
+        //println("Successfuly set cell label")
         return cell
     }
     

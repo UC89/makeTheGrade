@@ -27,7 +27,9 @@ class Grade: NSManagedObject {
         
         var course:NSArray = moc.executeFetchRequest(belongsToCourse, error: nil)!
         var courseSelected = course[0] as Course
-        println("------------------Course Selected is \(courseSelected.courseTitle)--------------------------")
+        println("\n\n------***------------Course Selected is \(courseSelected.courseTitle)---------***-----------------")
+        
+        println("Can Add Grade Function: \(courseSelected.canAddGrade(gradeTypeIn,gradePercentageIn: percentageIn))")
         
         let newGrade = NSEntityDescription.insertNewObjectForEntityForName("Grade", inManagedObjectContext: moc) as Grade
         println("Established grade object")

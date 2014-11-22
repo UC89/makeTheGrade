@@ -39,13 +39,13 @@ class NewGradeViewController: UIViewController,UIPickerViewDelegate{
     
     func loadCourseDictionary()
     {
-        println("LoadingSemesterString List ------------------------------------")
+        //println("LoadingSemesterString List ------------------------------------")
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
         var courseObjectList = Student.returnAllCourses(context)
-        println("returning semesterObjectList \(courseObjectList)")
+        //println("returning semesterObjectList \(courseObjectList)")
         
-        println("--------------------------------------------")
+        //println("--------------------------------------------")
         for course in courseObjectList
         {
             var courseInLoop = course as Course
@@ -117,8 +117,7 @@ class NewGradeViewController: UIViewController,UIPickerViewDelegate{
         let gradePointsEarned = (pointsEarnedTextField.text as NSString).floatValue
         let gradePointsPossible = (pointsPossibleTextField.text as NSString).floatValue
         let percentageOfCat = (percOfCategoryTextField.text as NSString).floatValue
-        println("")
-        println("Adding a grade------------------------------------------------")
+        println("\n*****************\n Adding a grade\n------------------------------------------------\n")
         Grade.addGrade(context, titleIn: gradeTitle, pointsEarnedIn: gradePointsEarned, pointsPossibleIn: gradePointsPossible, percentageIn: percentageOfCat, courseIDIn: courseSelectedId, gradeTypeIn: categoryID)
         save()
     }
