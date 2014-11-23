@@ -16,7 +16,37 @@ class GpaDetailViewController: UIViewController {
     var appDel = AppDelegate()
     var context = NSManagedObjectContext()
     
+    @IBOutlet var gpaGoalField: UITextField!
+    @IBOutlet var overallGPALabel: UILabel!
+    @IBOutlet var scienceGPALabel: UILabel!
+    @IBOutlet var nonScienceGPALabel: UILabel!
+    @IBOutlet var majorGPA: UILabel!
+    
+
     var user: NSManagedObject = NSManagedObject()
+    
+    @IBAction func clickSubmit()
+    {
+        
+        var request = NSFetchRequest(entityName: "Student")
+        request.returnsObjectsAsFaults = false;
+        
+        //filters User objects to only return those with studentName = to "User"
+        request.predicate = NSPredicate(format:"studentName = %@", "User")
+        
+        var result: NSArray = context.executeFetchRequest(request, error: nil)!
+        
+        var user = result[0] as Student
+        println("User \(user.studentName) GPA: \(user.returnGPA())")
+        println("\n**********************************************************")
+        println("In clickSubmit Function")
+        var userObject = user as Student
+        println("Set user object")
+        userObject.goalGPA = (gpaGoalField.text as NSString).floatValue
+        println("Set user ggoal gpa")
+        println("Goal GPA Submitted Successfuly  GPA Goal: \(userObject.goalGPA)")
+        println("----------------------------------------------------------\n")
+    }
     
     func loadContext()
     {

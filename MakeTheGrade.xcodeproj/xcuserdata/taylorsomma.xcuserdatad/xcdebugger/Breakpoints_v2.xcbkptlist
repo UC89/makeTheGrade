@@ -59,7 +59,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
             endingLineNumber = "40"
-            landmarkName = "addCourse(_:title:courseCredits:courseExamsPerc:courseQuizesPerc:courseHwPerc:courseOtherPerc:isScienceCourse:isCoursePoints:gradeOverride:semesterIDIn:)"
+            landmarkName = "addCourse(_:title:courseCredits:courseExamsPerc:courseQuizesPerc:courseHwPerc:courseOtherPerc:isScienceCourse:isCoursePoints:gradeOverride:gradeGoalIn:semesterIDIn:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -150,11 +150,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/NewCourseViewController.swift"
-            timestampString = "436923383.935978"
+            timestampString = "438461797.500435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "pointsOrPercentageSegmentOutlet(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -166,11 +166,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/Course.swift"
-            timestampString = "438380580.200122"
+            timestampString = "438461797.500435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
+            startingLineNumber = "519"
+            endingLineNumber = "519"
             landmarkName = "returnLetterGrade()"
             landmarkType = "5">
          </BreakpointContent>
@@ -182,11 +182,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/NewCourseViewController.swift"
-            timestampString = "437179140.394196"
+            timestampString = "438461797.500435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "132"
+            endingLineNumber = "132"
             landmarkName = "submitButtonPressed()"
             landmarkType = "5">
          </BreakpointContent>
@@ -198,11 +198,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/Course.swift"
-            timestampString = "438380580.200122"
+            timestampString = "438461797.500435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
+            startingLineNumber = "519"
+            endingLineNumber = "519"
             landmarkName = "returnLetterGrade()"
             landmarkType = "5">
          </BreakpointContent>
@@ -214,11 +214,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/NewCourseViewController.swift"
-            timestampString = "436856093.486708"
+            timestampString = "438461797.500435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
             landmarkName = "NewCourseViewController"
             landmarkType = "3">
          </BreakpointContent>
@@ -262,11 +262,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/NewCourseViewController.swift"
-            timestampString = "437179140.394196"
+            timestampString = "438461797.500435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "pickerView(_:titleForRow:forComponent:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -342,12 +342,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/GpaDetailViewController.swift"
-            timestampString = "437377380.125734"
+            timestampString = "438458795.44731"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "didReceiveMemoryWarning()"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -438,11 +438,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/Course.swift"
-            timestampString = "438048282.292902"
+            timestampString = "438461797.500435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "returnTotalPointsPossible()"
             landmarkType = "5">
          </BreakpointContent>
@@ -454,11 +454,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/Course.swift"
-            timestampString = "438048518.436899"
+            timestampString = "438461797.500435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "returnPointsNeededToMakeGrade()"
             landmarkType = "5">
          </BreakpointContent>
@@ -486,11 +486,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/Course.swift"
-            timestampString = "438134112.246589"
+            timestampString = "438461797.500435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
             landmarkName = "returnCategoryCompleteDictionary()"
             landmarkType = "5">
          </BreakpointContent>
@@ -502,11 +502,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MakeTheGrade/Course.swift"
-            timestampString = "438232500.617964"
+            timestampString = "438461797.500435"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "returnCourseCompletePercentage()"
             landmarkType = "5">
          </BreakpointContent>

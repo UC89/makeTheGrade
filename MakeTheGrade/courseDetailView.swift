@@ -189,6 +189,24 @@ class courseDetailView: UIViewController, UITableViewDataSource
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    {
+        if (segue.identifier == "clickCourseName")
+        {
+            var svc = segue.destinationViewController as courseDetailView
+            svc.courseID = sendCourseID
+        }
+        else if (segue.identifier == "addOptionSegue")
+        {
+            var svc = segue.destinationViewController as AddOptionViewController
+        }
+        else if (segue.identifier == "gpaDetailSegue")
+        {
+            var svc = segue.destinationViewController as GpaDetailViewController
+            //svc.currentUser = mainUser[0] as Student
+        }
+    }
+    */
 }

@@ -15,6 +15,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     @IBOutlet var courseTitle: UITextField!
     @IBOutlet var courseCredits: UITextField!
     @IBOutlet var gradeOverride: UITextField!
+    @IBOutlet var goalGradeField: UITextField!
     @IBOutlet weak var quizPercentage: UITextField!
     @IBOutlet weak var examPercentage: UITextField!
     @IBOutlet weak var homeworkPercentage: UITextField!
@@ -31,6 +32,9 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     var semesterStringSelected:String = ""
     var semesterDict = [Int:String]()
     var semesterIDSelected: Int!
+    
+    //This var is for a course ID var to be passed in for user to be able to change settings
+    var courseIDIn:Int!
  
     // Add context and delegate variables and function to initialize them for coredata here
     
@@ -110,6 +114,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         let homeworkPercentageFloat = (homeworkPercentage.text as NSString).floatValue
         let otherPercentageFloat = (otherPercentage.text as NSString).floatValue
         let gradeOverrideFloat = (gradeOverride.text as NSString).floatValue
+        let gradeGoalFloat = (goalGradeField.text as NSString).floatValue
         
         if (pointsOrPercentageVar == false)
         {
@@ -122,7 +127,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
-        Course.addCourse(context, title: courseTitle.text, courseCredits: courseCreditsFloat, courseExamsPerc: courseExamsPercFloat, courseQuizesPerc: quizPercentageFloat, courseHwPerc: homeworkPercentageFloat, courseOtherPerc: otherPercentageFloat, isScienceCourse: scienceClassVar, isCoursePoints: pointsOrPercentageVar, gradeOverride: gradeOverrideFloat, semesterIDIn: semesterIDSelected)
+        Course.addCourse(context, title: courseTitle.text, courseCredits: courseCreditsFloat, courseExamsPerc: courseExamsPercFloat, courseQuizesPerc: quizPercentageFloat, courseHwPerc: homeworkPercentageFloat, courseOtherPerc: otherPercentageFloat, isScienceCourse: scienceClassVar, isCoursePoints: pointsOrPercentageVar, gradeOverride: gradeOverrideFloat,gradeGoalIn: gradeGoalFloat, semesterIDIn: semesterIDSelected)
         save()
         println("Course added with name \(courseTitle.text) and semester id of \(semesterIDSelected)")
     }

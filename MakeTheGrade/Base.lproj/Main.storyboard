@@ -715,6 +715,9 @@
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="544" y="338" width="40" height="30"/>
                                 </variation>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="358" y="335" width="37" height="30"/>
+                                </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoN-8R-u4v">
                                 <rect key="frame" x="179" y="380" width="97" height="30"/>
@@ -726,31 +729,6 @@
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="355" y="373" width="40" height="30"/>
-                                </variation>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3.0 " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cd9-OQ-iOA">
-                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="97" id="EVA-hQ-4ls"/>
-                                </constraints>
-                                <color key="textColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="EVA-hQ-4ls"/>
-                                    </mask>
-                                </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="487" y="98" width="97" height="30"/>
-                                    <mask key="constraints">
-                                        <include reference="EVA-hQ-4ls"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <exclude reference="EVA-hQ-4ls"/>
-                                    </mask>
                                 </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="0" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Rk-uc-2na">
@@ -782,6 +760,49 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="134" y="63" width="450" height="30"/>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grade Goal" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfO-Yj-rp2">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="10" y="420" width="88" height="21"/>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NwF-rH-8ue">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <color key="textColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="298" y="416" width="97" height="30"/>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="3.0 " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cd9-OQ-iOA">
+                                <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="EVA-hQ-4ls"/>
+                                </constraints>
+                                <color key="textColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="EVA-hQ-4ls"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="487" y="98" width="97" height="30"/>
+                                    <mask key="constraints">
+                                        <include reference="EVA-hQ-4ls"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="EVA-hQ-4ls"/>
+                                    </mask>
                                 </variation>
                             </textField>
                         </subviews>
@@ -913,9 +934,11 @@
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="dPw-4T-VGK"/>
-                                <exclude reference="cd9-OQ-iOA"/>
                                 <exclude reference="0Rk-uc-2na"/>
                                 <exclude reference="Lr3-lc-0H4"/>
+                                <exclude reference="KfO-Yj-rp2"/>
+                                <exclude reference="NwF-rH-8ue"/>
+                                <exclude reference="cd9-OQ-iOA"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="0iE-gb-DIH"/>
@@ -1012,9 +1035,9 @@
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="dPw-4T-VGK"/>
-                                <include reference="cd9-OQ-iOA"/>
                                 <include reference="0Rk-uc-2na"/>
                                 <include reference="Lr3-lc-0H4"/>
+                                <include reference="cd9-OQ-iOA"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="0iE-gb-DIH"/>
@@ -1106,6 +1129,10 @@
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="KfO-Yj-rp2"/>
+                                <include reference="NwF-rH-8ue"/>
+                            </mask>
                             <mask key="constraints">
                                 <exclude reference="0iE-gb-DIH"/>
                                 <exclude reference="9ok-oE-BYg"/>
@@ -1236,6 +1263,7 @@
                         <outlet property="courseCredits" destination="cd9-OQ-iOA" id="AvF-O8-8c2"/>
                         <outlet property="courseTitle" destination="Lr3-lc-0H4" id="34k-O7-Fly"/>
                         <outlet property="examPercentage" destination="o1R-qT-21w" id="01F-xw-C50"/>
+                        <outlet property="goalGradeField" destination="NwF-rH-8ue" id="Kne-In-Vz7"/>
                         <outlet property="gradeOverride" destination="0Rk-uc-2na" id="If8-03-2Xe"/>
                         <outlet property="homeworkPercentage" destination="dPw-4T-VGK" id="AMz-tY-7zT"/>
                         <outlet property="isScienceClass" destination="J6q-xk-ROF" id="DbM-KB-PMZ"/>
@@ -1513,7 +1541,7 @@
                                 <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
                                 <color key="textColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="152" y="111" width="97" height="30"/>
                                 </variation>
@@ -1535,16 +1563,101 @@
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="338" y="16" width="49" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="clickSubmit" destination="7C9-m0-mMV" eventType="touchUpInside" id="Mt8-9u-GJT"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vxc-dS-AxP">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <state key="normal" title="What if?">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overall GPA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7n-Xn-d8d">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="177" y="185" width="57" height="30"/>
+                                    <rect key="frame" x="26" y="198" width="93" height="21"/>
                                 </variation>
-                            </button>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Science GPA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhC-9s-z4W">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="26" y="269" width="100" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Non Science GPA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YmV-CX-8fJ">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="26" y="344" width="137" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major GPA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bov-zW-kSb">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="26" y="412" width="83" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Courses" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0mu-2x-Aoe">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="207" y="198" width="91" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Science Courses" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zE1-Xu-9FV">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="207" y="269" width="157" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWl-lS-pX8">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="207" y="344" width="42" height="21"/>
+                                </variation>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="oud-Ae-WKQ">
+                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <segments>
+                                    <segment title="Yes"/>
+                                    <segment title="No"/>
+                                </segments>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="311" y="154" width="73" height="29"/>
+                                </variation>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Include courses in progress" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7YH-6U-9aR">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="22" y="157" width="212" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8N-Hc-IZ5">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="207" y="412" width="42" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1557,7 +1670,16 @@
                                 <exclude reference="hXc-Ju-w1G"/>
                                 <exclude reference="ZeA-Zu-cot"/>
                                 <exclude reference="ej5-JU-Ra1"/>
-                                <exclude reference="Vxc-dS-AxP"/>
+                                <exclude reference="n7n-Xn-d8d"/>
+                                <exclude reference="nhC-9s-z4W"/>
+                                <exclude reference="YmV-CX-8fJ"/>
+                                <exclude reference="bov-zW-kSb"/>
+                                <exclude reference="0mu-2x-Aoe"/>
+                                <exclude reference="zE1-Xu-9FV"/>
+                                <exclude reference="dWl-lS-pX8"/>
+                                <exclude reference="oud-Ae-WKQ"/>
+                                <exclude reference="7YH-6U-9aR"/>
+                                <exclude reference="h8N-Hc-IZ5"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="hCb-Yn-hr5"/>
@@ -1577,10 +1699,26 @@
                                 <include reference="hXc-Ju-w1G"/>
                                 <include reference="ZeA-Zu-cot"/>
                                 <include reference="ej5-JU-Ra1"/>
-                                <include reference="Vxc-dS-AxP"/>
+                                <include reference="n7n-Xn-d8d"/>
+                                <include reference="nhC-9s-z4W"/>
+                                <include reference="YmV-CX-8fJ"/>
+                                <include reference="bov-zW-kSb"/>
+                                <include reference="0mu-2x-Aoe"/>
+                                <include reference="zE1-Xu-9FV"/>
+                                <include reference="dWl-lS-pX8"/>
+                                <include reference="oud-Ae-WKQ"/>
+                                <include reference="7YH-6U-9aR"/>
+                                <include reference="h8N-Hc-IZ5"/>
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="gpaGoalField" destination="hXc-Ju-w1G" id="bB1-z2-SCt"/>
+                        <outlet property="majorGPA" destination="h8N-Hc-IZ5" id="AtH-3u-x8S"/>
+                        <outlet property="nonScienceGPALabel" destination="dWl-lS-pX8" id="kon-nH-gmb"/>
+                        <outlet property="overallGPALabel" destination="0mu-2x-Aoe" id="Rdz-GZ-rhD"/>
+                        <outlet property="scienceGPALabel" destination="zE1-Xu-9FV" id="5vN-JH-7N7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6UA-UM-MKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1590,7 +1728,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="Vok-FC-2un"/>
         <segue reference="G1I-aI-TwE"/>
-        <segue reference="0yw-bH-uFe"/>
+        <segue reference="emU-S6-JhD"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.67346185520000001" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -31,7 +31,7 @@ class Course: NSManagedObject {
     var currentGrade: Double = Double()
     
     
-    class func addCourse(moc: NSManagedObjectContext, title:String,courseCredits:Float,courseExamsPerc:Float,courseQuizesPerc:Float,courseHwPerc:Float,courseOtherPerc:Float,isScienceCourse:Bool, isCoursePoints:Bool, gradeOverride:Float,semesterIDIn:Int) -> Course
+    class func addCourse(moc: NSManagedObjectContext, title:String,courseCredits:Float,courseExamsPerc:Float,courseQuizesPerc:Float,courseHwPerc:Float,courseOtherPerc:Float,isScienceCourse:Bool, isCoursePoints:Bool, gradeOverride:Float, gradeGoalIn: Float,semesterIDIn:Int) -> Course
     {
         let belongsToSemester = NSFetchRequest(entityName: "Semester")
         belongsToSemester.returnsObjectsAsFaults = false
@@ -52,6 +52,7 @@ class Course: NSManagedObject {
         newCourse.otherPerc = courseOtherPerc
         newCourse.pointsOrPercentage = isCoursePoints
         newCourse.scienceCourse = isScienceCourse
+        newCourse.goalGrade = gradeGoalIn
         newCourse.belongsTo = semesterSelected
         newCourse.courseID = newCourseID
         
