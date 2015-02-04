@@ -21,6 +21,7 @@ class GpaDetailViewController: UIViewController {
     @IBOutlet var scienceGPALabel: UILabel!
     @IBOutlet var nonScienceGPALabel: UILabel!
     @IBOutlet var majorGPA: UILabel!
+    @IBOutlet var makingGPAGoalLabel: UILabel!
     
 
     var user: NSManagedObject = NSManagedObject()
@@ -45,7 +46,20 @@ class GpaDetailViewController: UIViewController {
         userObject.goalGPA = (gpaGoalField.text as NSString).floatValue
         println("Set user ggoal gpa")
         println("Goal GPA Submitted Successfuly  GPA Goal: \(userObject.goalGPA)")
+        
         println("----------------------------------------------------------\n")
+        
+        if (userObject.returnGPA() >= userObject.goalGPA)
+        {
+            makingGPAGoalLabel.textColor = UIColor.greenColor()
+            
+            makingGPAGoalLabel.text = "Your GPA of \(userObject.returnGPA()) meets your goal of \(userObject.goalGPA)"
+        }
+        else
+        {
+            makingGPAGoalLabel.textColor = UIColor.redColor()
+            makingGPAGoalLabel.text = "Your GPA of \(userObject.returnGPA()) does not meet your goal of \(userObject.goalGPA)"
+        }
     }
     
     func loadContext()
@@ -70,6 +84,18 @@ class GpaDetailViewController: UIViewController {
         
         var user = result[0] as Student
         println("User \(user.studentName) GPA: \(user.returnGPA())")
+        
+        
+        if (user.returnGPA() >= user.goalGPA)
+        {
+            makingGPAGoalLabel.textColor = UIColor.greenColor()
+            makingGPAGoalLabel.text = "Your GPA of \(user.returnGPA()) meets your goal of \(user.goalGPA)"
+        }
+        else
+        {
+            makingGPAGoalLabel.textColor = UIColor.redColor()
+            makingGPAGoalLabel.text = "Your GPA of \(user.returnGPA()) does not meet your goal of \(user.goalGPA)"
+        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()

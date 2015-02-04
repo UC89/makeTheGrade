@@ -127,6 +127,31 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         
     }
     
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if editingStyle == UITableViewCellEditingStyle.Delete
+        {
+            println("\n\n---------------Deleting Course from Context--------------------")
+            var courseToDeleteList = semesterCourseDict[indexPath.section]
+            var courseToDelete = courseToDeleteList?.objectAtIndex(indexPath.row) as Course
+            println("courseToDelete: \(courseToDelete.courseTitle)")
+            context.deleteObject(courseToDelete)
+            println("Error part 1")
+            loadSemesterCourseDict()
+            println("error part 2")
+            gradeTableView.reloadData()
+            println("Semester Course Dict: \(semesterCourseDict)")
+            println("error part 3")
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            println("error part 4")
+        }
+    }
+    
+
+    
+    //Line to delete an nsmanagedobject
+    // [aContext deleteObject:aManagedObject]
+    //context.save()
     
     //Send vars to other view controller here
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)

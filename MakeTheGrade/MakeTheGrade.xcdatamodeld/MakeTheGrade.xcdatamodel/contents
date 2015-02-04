@@ -10,6 +10,7 @@
         <attribute name="gradeOverrideBool" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="homeworkPerc" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="isCourseFinished" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="majorCourse" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="otherPerc" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="pointsOrPercentage" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="quizesPerc" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
@@ -48,7 +49,7 @@
         <relationship name="semesterList" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Semester" inverseName="belongsTo" inverseEntity="Semester" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Course" positionX="340" positionY="-27" width="128" height="283"/>
+        <element name="Course" positionX="340" positionY="-27" width="128" height="300"/>
         <element name="Grade" positionX="27" positionY="9" width="128" height="148"/>
         <element name="Semester" positionX="45" positionY="-148" width="128" height="133"/>
         <element name="Student" positionX="331" positionY="-216" width="128" height="195"/>

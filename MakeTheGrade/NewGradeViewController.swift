@@ -113,13 +113,29 @@ class NewGradeViewController: UIViewController,UIPickerViewDelegate{
     
     @IBAction func clickSubmit()
     {
+
+        var emptyString = ""
+        
+        if (assignmentNameTextField.text==emptyString || pointsEarnedTextField.text==emptyString || pointsPossibleTextField.text==emptyString)
+        {
+            println("This is not a valid form. Please fill in all of the required fields.")
+        }
+        else
+        {
         let gradeTitle = assignmentNameTextField.text as String
+
         let gradePointsEarned = (pointsEarnedTextField.text as NSString).floatValue
         let gradePointsPossible = (pointsPossibleTextField.text as NSString).floatValue
         let percentageOfCat = (percOfCategoryTextField.text as NSString).floatValue
+        
+        
+        // Need to add constraints here to make sure grades are valid
         println("\n*****************\n Adding a grade\n------------------------------------------------\n")
+        
         Grade.addGrade(context, titleIn: gradeTitle, pointsEarnedIn: gradePointsEarned, pointsPossibleIn: gradePointsPossible, percentageIn: percentageOfCat, courseIDIn: courseSelectedId, gradeTypeIn: categoryID)
+        }
         save()
+        
     }
 
 

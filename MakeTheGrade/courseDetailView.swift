@@ -24,6 +24,8 @@ class courseDetailView: UIViewController, UITableViewDataSource
     var courseID: Int!
     var gradeCats = ["Test","Quiz","HW","Other","Uncategorized"]
     var gradeCatsActual = [String]()
+    var gradeOverrideLocal: Float!
+    var gradeOverrideBoolLocal: Bool!
     
     func loadContext()
     {
@@ -33,6 +35,7 @@ class courseDetailView: UIViewController, UITableViewDataSource
     
     func loadCourseGradeDict()
     {
+        
         //gets all User objects
         var request = NSFetchRequest(entityName: "Course")
         request.returnsObjectsAsFaults = false;
@@ -48,6 +51,16 @@ class courseDetailView: UIViewController, UITableViewDataSource
         courseTitleLabel.text = currentCourse.courseTitle
         letterGradeHeader.text = currentCourse.returnLetterGrade()
         
+        
+        gradeOverrideBoolLocal = currentCourse.gradeOverrideBool
+        
+        if (gradeOverrideBoolLocal == true)
+        {
+            gradeOverrideLocal = currentCourse.gradeOverride
+        }
+        
+        else
+        {
         var tempTestList = NSMutableArray()
         var tempQuizList = NSMutableArray()
         var tempHWList = NSMutableArray()
@@ -107,11 +120,16 @@ class courseDetailView: UIViewController, UITableViewDataSource
         }
         
         println("\(courseGradeDict)")
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         //println("\n Making Table View in Course Detail View \n ------------------------------------")
+        if (gradeOverrideBoolLocal == true)
+        {
+            return 1
+        }
         var currentCat = gradeCatsActual[section]
         var currentCatGrades = courseGradeDict[currentCat]
         var currentCatGradesCount = currentCatGrades?.count
@@ -122,47 +140,43 @@ class courseDetailView: UIViewController, UITableViewDataSource
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         //println("In numberOfSectionsInTableView returning \(gradeCatsActual) count of \(gradeCatsActual.count)")
+        if (gradeOverrideBoolLocal == true)
+        {
+            return 1
+        }
         return gradeCatsActual.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String
     {
         //println("In titleForHeaderInSection and returning \(gradeCatsActual) section \(gradeCats[section])")
+        if (gradeOverrideBoolLocal == true)
+        {
+            return "Course Grade Overriden"
+        }
         return gradeCatsActual[section]
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-       // println("\nMaking Cell--------------------------\n")
+
         let cell = UITableViewCell(style: UITableViewCellStyle.Value1, reuseIdentifier: "No Grades Entered")
-       // println("\n CourseGradeDict[gradeCats]indexPath.section]] returns \(courseGradeDict[gradeCats[indexPath.section]])")
-       /* if (courseGradeDict[gradeCats[indexPath.section]] != nil)
+
+        if (gradeOverrideBoolLocal == true)
         {
-            var gradeListTemp = courseGradeDict[gradeCats[indexPath.section]]
-            var gradeObj = gradeListTemp?.objectAtIndex(indexPath.row) as Grade
-            
-            cell.textLabel?.text = "\(gradeObj.assignmentTitle)"
+            cell.textLabel?.text = "Grade Override: \(gradeOverrideLocal)"
+            return cell
         }
-        else
-        {
-            cell.textLabel?.text = "No Grades Entered"
-        }
-        */
-        
         var currentGradeCat = gradeCatsActual[indexPath.section]
-        //println("Passed currentGradeCat")
+
         var currentGradeCatGrades = courseGradeDict[currentGradeCat]
-        //println("\nAbout to get currentGrade object for cell label")
-        //println("-----------------------------------------\n\(currentGradeCatGrades)/n")
+
         var currentGrade = currentGradeCatGrades?.objectAtIndex(indexPath.row) as Grade
-        //println("Got currentGrade object \(currentGrade)")
-        
-        //(NSString(format: "%.03f", user.returnGPA()))
-        
+
         var currentGradeForCell = NSString(format: "%.01f", (Float(currentGrade.pointsEarned) / Float(currentGrade.pointsPossible)) * 100)
         
         cell.textLabel?.text = "\(currentGrade.assignmentName) Grade: \(currentGradeForCell) Percentage: \(currentGrade.percentage)"
-        //println("Successfuly set cell label")
+
         return cell
     }
     

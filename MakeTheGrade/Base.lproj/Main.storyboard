@@ -715,9 +715,6 @@
                                 <variation key="widthClass=compact" misplaced="YES">
                                     <rect key="frame" x="544" y="338" width="40" height="30"/>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="358" y="335" width="37" height="30"/>
-                                </variation>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="10" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xoN-8R-u4v">
                                 <rect key="frame" x="179" y="380" width="97" height="30"/>
@@ -805,6 +802,28 @@
                                     </mask>
                                 </variation>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Major Course" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rd6-go-9Yb">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="10" y="468" width="104" height="21"/>
+                                </variation>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zoV-0s-hR2">
+                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
+                                <segments>
+                                    <segment title="Yes"/>
+                                    <segment title="No"/>
+                                </segments>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="321" y="465" width="73" height="29"/>
+                                </variation>
+                                <connections>
+                                    <action selector="isMajorCourseSegmentOutlet:" destination="ucw-tm-PvA" eventType="valueChanged" id="R09-PQ-GWO"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -939,6 +958,8 @@
                                 <exclude reference="KfO-Yj-rp2"/>
                                 <exclude reference="NwF-rH-8ue"/>
                                 <exclude reference="cd9-OQ-iOA"/>
+                                <exclude reference="rd6-go-9Yb"/>
+                                <exclude reference="zoV-0s-hR2"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="0iE-gb-DIH"/>
@@ -1132,6 +1153,8 @@
                             <mask key="subviews">
                                 <include reference="KfO-Yj-rp2"/>
                                 <include reference="NwF-rH-8ue"/>
+                                <include reference="rd6-go-9Yb"/>
+                                <include reference="zoV-0s-hR2"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="0iE-gb-DIH"/>
@@ -1266,6 +1289,7 @@
                         <outlet property="goalGradeField" destination="NwF-rH-8ue" id="Kne-In-Vz7"/>
                         <outlet property="gradeOverride" destination="0Rk-uc-2na" id="If8-03-2Xe"/>
                         <outlet property="homeworkPercentage" destination="dPw-4T-VGK" id="AMz-tY-7zT"/>
+                        <outlet property="isMajorCourse" destination="zoV-0s-hR2" id="ceu-QO-wih"/>
                         <outlet property="isScienceClass" destination="J6q-xk-ROF" id="DbM-KB-PMZ"/>
                         <outlet property="otherPercentage" destination="xoN-8R-u4v" id="qYm-Ul-yTR"/>
                         <outlet property="pointsOrPercentageSegmentOutlet" destination="ScW-Po-bvw" id="Yzr-yE-QVg"/>
@@ -1543,7 +1567,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="152" y="111" width="97" height="30"/>
+                                    <rect key="frame" x="287" y="108" width="97" height="30"/>
                                 </variation>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set your goal GPA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeA-Zu-cot">
@@ -1552,7 +1576,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="130" y="73" width="141" height="21"/>
+                                    <rect key="frame" x="22" y="112" width="141" height="21"/>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ej5-JU-Ra1">
@@ -1658,6 +1682,15 @@
                                     <rect key="frame" x="207" y="412" width="42" height="21"/>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Goal GPA: 3.000 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmq-eX-RHh">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="68" width="368" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1680,6 +1713,7 @@
                                 <exclude reference="oud-Ae-WKQ"/>
                                 <exclude reference="7YH-6U-9aR"/>
                                 <exclude reference="h8N-Hc-IZ5"/>
+                                <exclude reference="fmq-eX-RHh"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="hCb-Yn-hr5"/>
@@ -1709,12 +1743,14 @@
                                 <include reference="oud-Ae-WKQ"/>
                                 <include reference="7YH-6U-9aR"/>
                                 <include reference="h8N-Hc-IZ5"/>
+                                <include reference="fmq-eX-RHh"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="gpaGoalField" destination="hXc-Ju-w1G" id="bB1-z2-SCt"/>
                         <outlet property="majorGPA" destination="h8N-Hc-IZ5" id="AtH-3u-x8S"/>
+                        <outlet property="makingGPAGoalLabel" destination="fmq-eX-RHh" id="SxQ-nw-bVC"/>
                         <outlet property="nonScienceGPALabel" destination="dWl-lS-pX8" id="kon-nH-gmb"/>
                         <outlet property="overallGPALabel" destination="0mu-2x-Aoe" id="Rdz-GZ-rhD"/>
                         <outlet property="scienceGPALabel" destination="zE1-Xu-9FV" id="5vN-JH-7N7"/>

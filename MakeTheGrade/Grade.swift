@@ -27,6 +27,12 @@ class Grade: NSManagedObject {
         
         var course:NSArray = moc.executeFetchRequest(belongsToCourse, error: nil)!
         var courseSelected = course[0] as Course
+        
+        if (courseSelected.pointsOrPercentage == true && percentageIn == 0.0)
+        {
+            // Add UIAlert view here to ask user if they are sure they do not want to add the percentage of this grade to the category.
+            println("You didn't enter a category Percentage!!!!!!!!!!!!!!!!!!!!!!!!!")
+        }
         println("\n\n------***------------Course Selected is \(courseSelected.courseTitle)---------***-----------------")
         
         println("Can Add Grade Function: \(courseSelected.canAddGrade(gradeTypeIn,gradePercentageIn: percentageIn))")

@@ -16,6 +16,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     @IBOutlet var courseCredits: UITextField!
     @IBOutlet var gradeOverride: UITextField!
     @IBOutlet var goalGradeField: UITextField!
+    @IBOutlet var isMajorCourse: UISegmentedControl!
     @IBOutlet weak var quizPercentage: UITextField!
     @IBOutlet weak var examPercentage: UITextField!
     @IBOutlet weak var homeworkPercentage: UITextField!
@@ -27,6 +28,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
     
     var pointsOrPercentageVar = true
     var scienceClassVar = true
+    var isMajorCourseVar = false
     var gradeOverrideVar: Float = 0
     var semesterStringList = ["1","2","3"]
     var semesterStringSelected:String = ""
@@ -105,6 +107,21 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
             scienceClassVar = true
         }
     }
+    
+    @IBAction func isMajorCourseSegmentOutlet(sender:UISegmentedControl)
+    {
+        switch isMajorCourse.selectedSegmentIndex
+        {
+            case 0:
+                isMajorCourseVar = true
+                println("Course is in Major \(isMajorCourseVar)")
+            case 1:
+                isMajorCourseVar = false
+                println("Course is not in major \(isMajorCourseVar)")
+            default:
+                isMajorCourseVar = false
+        }
+    }
 
     @IBAction func submitButtonPressed()
     {
@@ -127,7 +144,7 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         
         var appDel:AppDelegate = (UIApplication.sharedApplication().delegate as AppDelegate)
         var context:NSManagedObjectContext = appDel.managedObjectContext!
-        Course.addCourse(context, title: courseTitle.text, courseCredits: courseCreditsFloat, courseExamsPerc: courseExamsPercFloat, courseQuizesPerc: quizPercentageFloat, courseHwPerc: homeworkPercentageFloat, courseOtherPerc: otherPercentageFloat, isScienceCourse: scienceClassVar, isCoursePoints: pointsOrPercentageVar, gradeOverride: gradeOverrideFloat,gradeGoalIn: gradeGoalFloat, semesterIDIn: semesterIDSelected)
+        Course.addCourse(context, title: courseTitle.text, courseCredits: courseCreditsFloat, courseExamsPerc: courseExamsPercFloat, courseQuizesPerc: quizPercentageFloat, courseHwPerc: homeworkPercentageFloat, courseOtherPerc: otherPercentageFloat, isScienceCourse: scienceClassVar, isCoursePoints: pointsOrPercentageVar, gradeOverrideIn: gradeOverrideFloat,gradeGoalIn: gradeGoalFloat, semesterIDIn: semesterIDSelected, isMajorCourseIn: isMajorCourseVar)
         save()
         println("Course added with name \(courseTitle.text) and semester id of \(semesterIDSelected)")
     }

@@ -135,43 +135,43 @@ class Student: NSManagedObject {
                 }
                 totalGrades += currentGrade
                 totalCredits += courseObject.credits
-                if (currentGrade > 93)
+                if (currentGrade >= 93)
                 {
                     gradePoints += (4.0 * courseObject.credits)
                 }
-                else if (currentGrade > 90)
+                else if (currentGrade >= 90)
                 {
                     gradePoints += (3.7 * courseObject.credits)
                 }
-                else if (currentGrade > 87)
+                else if (currentGrade >= 87)
                 {
                     gradePoints += (3.4 * courseObject.credits)
                 }
-                else if (currentGrade > 83)
+                else if (currentGrade >= 83)
                 {
                     gradePoints += (3.0 *  courseObject.credits)
                 }
-                else if (currentGrade > 80)
+                else if (currentGrade >= 80)
                 {
                     gradePoints += (2.7 * courseObject.credits)
                 }
-                else if (currentGrade > 77)
+                else if (currentGrade >= 77)
                 {
                     gradePoints += (2.3 * courseObject.credits)
                 }
-                else if (currentGrade > 73)
+                else if (currentGrade >= 73)
                 {
                     gradePoints += (2.0 * courseObject.credits)
                 }
-                else if (currentGrade > 70)
+                else if (currentGrade >= 70)
                 {
                     gradePoints += (1.7 * courseObject.credits)
                 }
-                else if (currentGrade > 67)
+                else if (currentGrade >= 67)
                 {
                     gradePoints += (1.3 * courseObject.credits)
                 }
-                else if (currentGrade > 63)
+                else if (currentGrade >= 63)
                 {
                     gradePoints += (1.0 * courseObject.credits)
                 }

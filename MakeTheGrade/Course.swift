@@ -25,13 +25,14 @@ class Course: NSManagedObject {
     @NSManaged var isCourseFinished: Bool
     @NSManaged var courseID: NSNumber
     @NSManaged var goalGrade: NSNumber
+    @NSManaged var majorCourse: Bool
     @NSManaged var belongsTo: Semester
     @NSManaged var gradeList: NSSet
     
     var currentGrade: Double = Double()
     
     
-    class func addCourse(moc: NSManagedObjectContext, title:String,courseCredits:Float,courseExamsPerc:Float,courseQuizesPerc:Float,courseHwPerc:Float,courseOtherPerc:Float,isScienceCourse:Bool, isCoursePoints:Bool, gradeOverride:Float, gradeGoalIn: Float,semesterIDIn:Int) -> Course
+    class func addCourse(moc: NSManagedObjectContext, title:String,courseCredits:Float,courseExamsPerc:Float,courseQuizesPerc:Float,courseHwPerc:Float,courseOtherPerc:Float,isScienceCourse:Bool, isCoursePoints:Bool, gradeOverrideIn:Float, gradeGoalIn: Float,semesterIDIn:Int, isMajorCourseIn: Bool) -> Course
     {
         let belongsToSemester = NSFetchRequest(entityName: "Semester")
         belongsToSemester.returnsObjectsAsFaults = false
@@ -53,15 +54,17 @@ class Course: NSManagedObject {
         newCourse.pointsOrPercentage = isCoursePoints
         newCourse.scienceCourse = isScienceCourse
         newCourse.goalGrade = gradeGoalIn
+        newCourse.gradeOverride = gradeOverrideIn
+        newCourse.majorCourse = isMajorCourseIn
         newCourse.belongsTo = semesterSelected
         newCourse.courseID = newCourseID
         
         
         println("\n NEWCOURSEID----------------\(newCourseID) \n")
-        if (gradeOverride>0 )
+        if (gradeOverrideIn > 0 )
         {
             newCourse.gradeOverrideBool = true
-            newCourse.gradeOverride = gradeOverride
+            newCourse.gradeOverride = gradeOverrideIn
         }
         else
         {
@@ -371,18 +374,28 @@ class Course: NSManagedObject {
         println("Quiz perc Value: \(quizesPerc)")
         println("HW perc Value: \(homeworkPerc)")
         println("Other Perc Value: \(otherPerc)")
+        println("Grade Override: \(gradeOverride)")
+        println("GradeOverriide Bool: \(gradeOverrideBool)")
+        println("---------------------------------------------------\n\n\n\n")
     }
     
     func calcCurrentGrade() -> Float
     {
+        println("\n\n-------------------calcCurrentGrade() Called----------------------\n")
         var returnGrade: Float = Float()
+        
         if (pointsOrPercentage == 1)
         {
+            
             returnGrade = calcCurrentGradeForPoints()
         }
-        else
+        else if (pointsOrPercentage == 0)
         {
             returnGrade = calcCurrentGradeForPercentage()
+        }
+        if (gradeOverride > 0)
+        {
+            returnGrade = gradeOverride as Float
         }
         return returnGrade
     }
@@ -510,14 +523,7 @@ class Course: NSManagedObject {
     
     func returnLetterGrade() -> String
     {
-        if (pointsOrPercentage == true)
-        {
-            currentGrade = Double(self.calcCurrentGradeForPoints())
-        }
-        else if (pointsOrPercentage == false)
-        {
-            currentGrade = Double(self.calcCurrentGradeForPercentage())
-        }
+        var currentGrade = calcCurrentGrade()
         
         if (currentGrade > 93)
         {
