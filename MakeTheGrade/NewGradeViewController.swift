@@ -20,6 +20,7 @@ class NewGradeViewController: UIViewController,UIPickerViewDelegate{
     
     @IBOutlet var coursePickerView: UIPickerView!
     
+    @IBOutlet var gradePercentageUsed: UITableView!
     
     var appDel = AppDelegate()
     var context = NSManagedObjectContext()

@@ -209,6 +209,8 @@ class NewCourseViewController: UIViewController, UIPickerViewDelegate {
         println("--------------------------------------------------")
         println("Trying to print semester Dict \(semesterDict)")
         println("--------------------------------------------------")
+        
+        //Sets default value of picker view
         if (semesterDict.count>0)
         {
             semesterPickerView.selectRow(0, inComponent: 0, animated: true)
