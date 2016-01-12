@@ -124,7 +124,6 @@ class MainPageViewController: UIViewController, UITableViewDataSource {
         var selectedCourse = selectedSemester?.objectAtIndex(indexPath.row) as Course
         sendCourseID = selectedCourse.courseID
         performSegueWithIdentifier("clickCourseName", sender: cell)
-        
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)

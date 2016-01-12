@@ -121,6 +121,11 @@ class NewGradeViewController: UIViewController,UIPickerViewDelegate{
         {
             println("This is not a valid form. Please fill in all of the required fields.")
         }
+/*else if
+        {
+            // var categoryIDList = ["Test","Quiz","HW","Other"]
+        }
+*/ 
         else
         {
         let gradeTitle = assignmentNameTextField.text as String
